@@ -1,0 +1,60 @@
+Animal Laboratory Messsaging Service
+--------------------------
+
+This is a pilot project to prove technology can be developed to act as a hub for system to system
+interoperability for Animal Laboratory Data.
+
+Architecture Decisions:
+* RESTful architecture
+* GitHub as the src repository
+* Java as the language
+* Tomcat as the app server
+* MongoDB as the Store
+* Jersey, HAPIA as two libraries to build services on
+
+Supported Schemas for Send Messages Service
+* ALN Result Message (HL7)
+* NAHLN Result Base (HL7)
+* NAHLN CSF Base Message (HL7)
+* NAHLN WS AI Result Message (HL7)
+* NAHLN Order Response
+
+
+Services Available:
+
+Send Message
+-------------
+1. Client sends message to ALMS; message is validated in this order:
+	a. Security Credentials (based on header values)
+	b. Schema Validation (based on value sent in header)
+	c. Valid Receiver
+	d. Vocabulary Checks
+2. Data is stored in Mongo (NoSQL Data Store)
+3. Acknowledge Message sent to client (AE, AA). If Message is AA, it is queued as “sendable” to receiver
+
+Header Details
+*username
+*password
+*ScheameValidation
+
+Available HTTP Methods
+*Http Put through Application XML
+*Produces Application XML (HL7 Ack Message)
+
+Get Message
+-------------
+
+
+1. Client sends query to ALMS to get all available messages
+	a. Security Credentials (based on header values)
+	b. Header variable to specify type of messages to receive
+2. Collect Data from Store as “MessageList” array
+3. ALMS Wrapper message developed and sent; message stored in store
+
+Header Details
+*username
+*password
+
+Available HTTP Methods
+*Http Get
+*Produces Application XML (OPU Wrapper Message)
