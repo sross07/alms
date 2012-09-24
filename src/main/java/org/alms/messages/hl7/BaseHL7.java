@@ -1,22 +1,21 @@
-package org.alms.messages;
+package org.alms.messages.hl7;
 
-import java.io.StringReader;
-
+import org.alms.messages.*;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-
+import java.io.StringReader;
 import org.xml.sax.InputSource;
 
-public class NAHLNResultBaseMessage implements IMsg {
-		
+public abstract class BaseHL7 implements IMsg
+{
 	private String userName;
 	private String password;
 	private String XSDLocation;
 	private String incomingMessage;
-	
+		
 	@Override
 	public String getIncomingMessage() {
 		return incomingMessage;
@@ -55,21 +54,11 @@ public class NAHLNResultBaseMessage implements IMsg {
 		this.userName=map.get("username").toString().replace("[", "").replace("]", "");
 		this.password=map.get("password").toString().replace("[", "").replace("]", "");		
 	}
-
-
+	
 	@Override
-	public Boolean checkMessageVocubulary() 
-	{
-		// TO DO:  Check vocubulary here. 
-		// Not sure yet which fields need to be check; will do it here
+	public org.alms.beans.RelatedParty getMsgDestination() {
 		
-		return true;
-	}
-
-	@Override
-	public org.alms.beans.RelatedPary getMsgDestination() {
-		
-		org.alms.beans.RelatedPary system= new org.alms.beans.RelatedPary();		
+		org.alms.beans.RelatedParty system= new org.alms.beans.RelatedParty();		
 		system.setNamespaceID(GetValue("OPU_R25/MSH/MSH.6/HD.1"));
 		system.setUniversialID(GetValue("OPU_R25/MSH/MSH.6/HD.2"));
 		system.setUniversialType(GetValue("OPU_R25/MSH/MSH.6/HD.3"));
@@ -79,9 +68,9 @@ public class NAHLNResultBaseMessage implements IMsg {
 	
 
 	@Override
-	public org.alms.beans.RelatedPary getMsgSending() {
+	public org.alms.beans.RelatedParty getMsgSending() {
 		
-		org.alms.beans.RelatedPary system= new org.alms.beans.RelatedPary();		
+		org.alms.beans.RelatedParty system= new org.alms.beans.RelatedParty();		
 		system.setNamespaceID(GetValue("OPU_R25/MSH/MSH.4/HD.1"));
 		system.setUniversialID(GetValue("OPU_R25/MSH/MSH.4/HD.2"));
 		system.setUniversialType(GetValue("OPU_R25/MSH/MSH.4/HD.3"));
@@ -111,4 +100,6 @@ public class NAHLNResultBaseMessage implements IMsg {
 			return "N/A";
 		}
 	}
+	
+	public abstract Boolean checkMessageVocubulary();	
 }

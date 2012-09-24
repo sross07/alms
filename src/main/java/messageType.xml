@@ -2,7 +2,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="NAHLNResultBaseMessage" class="org.alms.messages.NAHLNResultBaseMessage">
+
+	<bean id="NAHLNResultBaseMessage" class="org.alms.messages.hl7.NAHLNResultBaseMessage">
 		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultBase.xsd"/>
 	</bean> 
+	
+	<bean id="ALMSResultMessage" class="org.alms.messages.hl7.ALMS">
+		<property name="XSDLocation"  value="D:\\aln\\ALNResult.xsd"/>
+	</bean> 
+	
+	<bean id="NAHLNCsfResultMessage" class="org.alms.messages.hl7.NAHLNCsfBaseResult">
+		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultCSF.xsd"/>
+	</bean> 
+	
+	<bean id="NAHLNAIResultMessage" class="org.alms.messages.hl7.NAHLNAvainInfluBase">
+		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultWSAI.xsd"/>
+	</bean> 
+	
 </beans>

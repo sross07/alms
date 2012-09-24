@@ -3,7 +3,7 @@ package org.alms.messages;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
 
-import org.alms.beans.RelatedPary;
+import org.alms.beans.RelatedParty;
 import 	org.alms.DataAccess.*;
 import 	org.alms.beans.*;
 
@@ -33,17 +33,17 @@ public class MessagePoll implements IMsg {
 	}
 
 	@Override
-	public RelatedPary getMsgDestination() {
+	public RelatedParty getMsgDestination() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RelatedPary getMsgSending(){
+	public RelatedParty getMsgSending(){
 		
 		UserManager userManager;		
 		UserAccount User = new UserAccount();
-		RelatedPary system = new RelatedPary();
+		RelatedParty system = new RelatedParty();
 		
 		try 
 		{
