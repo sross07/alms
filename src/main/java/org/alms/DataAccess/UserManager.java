@@ -5,12 +5,12 @@ import org.alms.beans.UserAccount;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.*;
 
-public class UserController {
+public class UserManager {
 	
 	private MorphiaMapperSetup morphiaMapper;
 	private Datastore ds;	
 	
-	public UserController() throws Exception
+	public UserManager() throws Exception
 	{
 		this.morphiaMapper = new MorphiaMapperSetup();		
 		this.ds = morphiaMapper.getDs();		

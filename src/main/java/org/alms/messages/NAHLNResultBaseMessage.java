@@ -67,9 +67,9 @@ public class NAHLNResultBaseMessage implements IMsg {
 	}
 
 	@Override
-	public org.alms.beans.SystemID getMsgDestination() {
+	public org.alms.beans.RelatedPary getMsgDestination() {
 		
-		org.alms.beans.SystemID system= new org.alms.beans.SystemID();		
+		org.alms.beans.RelatedPary system= new org.alms.beans.RelatedPary();		
 		system.setNamespaceID(GetValue("OPU_R25/MSH/MSH.6/HD.1"));
 		system.setUniversialID(GetValue("OPU_R25/MSH/MSH.6/HD.2"));
 		system.setUniversialType(GetValue("OPU_R25/MSH/MSH.6/HD.3"));
@@ -79,9 +79,9 @@ public class NAHLNResultBaseMessage implements IMsg {
 	
 
 	@Override
-	public org.alms.beans.SystemID getMsgSending() {
+	public org.alms.beans.RelatedPary getMsgSending() {
 		
-		org.alms.beans.SystemID system= new org.alms.beans.SystemID();		
+		org.alms.beans.RelatedPary system= new org.alms.beans.RelatedPary();		
 		system.setNamespaceID(GetValue("OPU_R25/MSH/MSH.4/HD.1"));
 		system.setUniversialID(GetValue("OPU_R25/MSH/MSH.4/HD.2"));
 		system.setUniversialType(GetValue("OPU_R25/MSH/MSH.4/HD.3"));

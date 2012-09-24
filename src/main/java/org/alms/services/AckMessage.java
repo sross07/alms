@@ -38,7 +38,7 @@ public class AckMessage
 			
 			ArrayList<String> ListIds= msg.getMessageIdList();						
 					
-			MessageInfoController manager = new MessageInfoController();			
+			MessageInfoManager manager = new MessageInfoManager();			
 			for(String str : ListIds)
 			{
 				manager.deleteMessage(str);

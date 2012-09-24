@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MessageInfoController 
+public class MessageInfoManager 
 {
 	
 	private MorphiaMapperSetup morphiaMapper;
 	private Datastore ds;
 
 
-	public MessageInfoController() throws Exception {
+	public MessageInfoManager() throws Exception {
 		this.morphiaMapper= new MorphiaMapperSetup();		
 		this.ds=morphiaMapper.getDs();	
 	}
@@ -51,7 +51,7 @@ public class MessageInfoController
 	{		
 		try
 		{
-			MessageInfoController controller = new MessageInfoController();	
+			MessageInfoManager controller = new MessageInfoManager();	
 		
 			for(String msgId : IdList)
 			{

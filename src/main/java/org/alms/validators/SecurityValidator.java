@@ -1,6 +1,7 @@
 package org.alms.validators;
 
 import org.alms.DataAccess.*;
+import org.alms.core.*;
 import org.alms.messages.IMsg;
 
 public class SecurityValidator extends MessageDecorator {
@@ -24,17 +25,17 @@ public class SecurityValidator extends MessageDecorator {
 		if (super.validate())
 		{
 			try 
-			{
-				UserController userManager = new UserController();			
-				if(userManager.DoesUserExist(this.userName, this.passWord))
+			{				
+				UserController userController = new UserController();				
+				if(userController.login(this.userName, this.passWord))
 				{
 					return true;
 				}
 				else
-				{
+				{					
 					this.errorMessage= "User account is not valid";
-					return false;
-				}
+					return false;					
+				}				
 			} 		
 			
 			catch (Exception e) 

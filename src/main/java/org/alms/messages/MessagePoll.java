@@ -3,7 +3,7 @@ package org.alms.messages;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
 
-import org.alms.beans.SystemID;
+import org.alms.beans.RelatedPary;
 import 	org.alms.DataAccess.*;
 import 	org.alms.beans.*;
 
@@ -33,21 +33,21 @@ public class MessagePoll implements IMsg {
 	}
 
 	@Override
-	public SystemID getMsgDestination() {
+	public RelatedPary getMsgDestination() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public SystemID getMsgSending(){
+	public RelatedPary getMsgSending(){
 		
-		UserController userManager;		
+		UserManager userManager;		
 		UserAccount User = new UserAccount();
-		SystemID system = new SystemID();
+		RelatedPary system = new RelatedPary();
 		
 		try 
 		{
-			userManager = new UserController();
+			userManager = new UserManager();
 			User=userManager.GetUser(this.getUserName());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

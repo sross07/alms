@@ -8,8 +8,8 @@ public interface IMsg
 	public void setHeader(HttpHeaders msgHeaders);	
 	public void setIncomingMessage(String incomingMessage);	
 	public Boolean checkMessageVocubulary();
-	public SystemID getMsgDestination();
-	public SystemID getMsgSending();
+	public RelatedPary getMsgDestination();
+	public RelatedPary getMsgSending();
 	public String getMsgId();	
 	public String getUserName();
 	public String getPassword();

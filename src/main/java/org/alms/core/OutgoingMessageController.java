@@ -16,7 +16,7 @@ public class OutgoingMessageController
 		
 		try 
 		{
-			MessageInfoController messageManager = new MessageInfoController();
+			MessageInfoManager messageManager = new MessageInfoManager();
 			messageManager.SaveResultMessage(msg);
 		} 
 		catch (Exception e) 

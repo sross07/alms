@@ -1,6 +1,6 @@
 package org.alms.beans;
 
-public class SystemID 
+public class RelatedPary 
 {
 	private String NamespaceID;
 	private String UniversialID;

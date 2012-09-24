@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.alms.DataAccess.MessageInfoController;
+import org.alms.DataAccess.MessageInfoManager;
 import org.alms.beans.MessageInfo;
 import org.alms.messages.*;
 import org.alms.beans.*;
@@ -26,11 +26,11 @@ public class MessagePollWorker
 		{
 			PollManager pollMsgManager= new PollManager();
 			
-			MessageInfoController messageController;
+			MessageInfoManager messageController;
 			List<MessageInfo> msgList;
-			UserController userManager = new UserController();
+			UserManager userManager = new UserManager();
 			
-			messageController = new MessageInfoController();
+			messageController = new MessageInfoManager();
 			msgList=messageController.GetMessages(this.msgData.getMsgSending().getNamespaceID());
 			String xmlResponse=this.CreateXML(msgList, messageId);
 			UserAccount user = userManager.GetUser(msgData.getUserName());

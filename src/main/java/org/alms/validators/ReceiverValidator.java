@@ -1,6 +1,6 @@
 package org.alms.validators;
 
-import org.alms.DataAccess.UserController;
+import org.alms.DataAccess.UserManager;
 import org.alms.messages.*;
 
 public class ReceiverValidator extends MessageDecorator 
@@ -22,7 +22,7 @@ public class ReceiverValidator extends MessageDecorator
 		{
 			try 
 			{
-				UserController userManager = new UserController();			
+				UserManager userManager = new UserManager();			
 				if(userManager.DoesUserExist(this.receiverId))
 				{
 					return true;
