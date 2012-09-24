@@ -1,6 +1,5 @@
 package org.alms.setup;
 
-import org.alms.DataAccess.UserManager;
 import org.alms.beans.UserAccount;
 import org.alms.core.*;
 
