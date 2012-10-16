@@ -20,7 +20,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.alms.messages.*;
 
-
 @Path("/SendMessage")
 public class SendMessage 
 {

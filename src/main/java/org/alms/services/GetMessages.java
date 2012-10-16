@@ -12,8 +12,6 @@ import org.alms.core.MessagePollWorker;
 import org.alms.messages.*;
 import org.alms.validators.*;
 
-
-
 @Path("/GetMessages")
 public class GetMessages 
 {
