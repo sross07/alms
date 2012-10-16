@@ -10,6 +10,6 @@ public class ALMSTest
     @GET
     public String getGreeting() 
     {
-        return "Hello, World!";
+        return "Hello, World!  Services are working, the paths are: services/AckMessage/{uid} ; serivces/GetMessages; services/SendMessage";
     }
 }
