@@ -29,8 +29,8 @@ Send Message
 	b. Schema Validation (based on value sent in header)
 	c. Valid Receiver
 	d. Vocabulary Checks
-2. Data is stored in Mongo (NoSQL Data Store)
-3. Acknowledge Message sent to client (AE, AA). If Message is AA, it is queued as “sendable” to receiver
+2. Data is stored in Mongo if receiver is set as Poll (NoSQL Data Store)
+3. Acknowledge Message sent to client (AE, AA). If Message is AA, it is queued as ï¿½sendableï¿½ to receiver
 
 Header Details
 *username
@@ -48,8 +48,9 @@ Get Message
 1. Client sends query to ALMS to get all available messages
 	a. Security Credentials (based on header values)
 	b. Header variable to specify type of messages to receive
-2. Collect Data from Store as “MessageList” array
-3. ALMS Wrapper message developed and sent; message stored in store
+2. Collect Data from Store 
+3. Delete message from MongDB
+4. ALMS Wrapper message developed and sent
 
 Header Details
 *username
