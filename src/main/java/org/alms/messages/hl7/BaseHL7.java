@@ -101,5 +101,11 @@ public abstract class BaseHL7 implements IMsg
 		}
 	}
 	
+	@Override
+	public String receiverTransmissionType() {
+		// TODO Auto-generated method stub
+		return "POLL";
+	}
+	
 	public abstract Boolean checkMessageVocubulary();	
 }

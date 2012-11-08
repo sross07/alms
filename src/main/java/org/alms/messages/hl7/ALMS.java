@@ -7,5 +7,7 @@ public class ALMS extends BaseHL7 {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	
 
 }

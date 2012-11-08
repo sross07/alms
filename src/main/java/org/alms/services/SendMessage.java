@@ -33,18 +33,27 @@ public class SendMessage
 		
 		IMsg messageData = doWorkForMessageType(headers, incomingMessage);
 		
-		IValidator msgValidator = new SimpleValidator();		
-		msgValidator= new SecurityValidator(msgValidator, messageData);	
-		msgValidator = new SchemaValidator(msgValidator, messageData);
-		msgValidator = new ReceiverValidator(msgValidator, messageData);
-		msgValidator = new VocabularyValidator(msgValidator, messageData);
-		
-		AckGenerator AckMessage = new AckGenerator(msgValidator.validate(), msgValidator.errorMessage());		
-		String ResponseMessage = AckMessage.getHL7AckMessage(messageData);		
-		
-		org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);	
-		
-		return ResponseMessage;
+		if (messageData.receiverTransmissionType() == "POLL")
+		{
+			IValidator msgValidator = new SimpleValidator();		
+			msgValidator= new SecurityValidator(msgValidator, messageData);	
+			msgValidator = new SchemaValidator(msgValidator, messageData);
+			msgValidator = new ReceiverValidator(msgValidator, messageData);
+			msgValidator = new VocabularyValidator(msgValidator, messageData);
+			
+			AckGenerator AckMessage = new AckGenerator(msgValidator.validate(), msgValidator.errorMessage());		
+			String ResponseMessage = AckMessage.getHL7AckMessage(messageData);		
+			
+			org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);	
+			
+			return ResponseMessage;
+		}
+		else
+		{
+			return "Push - Not Implemented";
+			
+		}
+
 	}
 	
 	private IMsg doWorkForMessageType(HttpHeaders headers, String incomingMessage)

@@ -9,6 +9,12 @@ import 	org.alms.beans.*;
 
 public class MessagePoll implements IMsg {
 
+	@Override
+	public String receiverTransmissionType() {
+		// TODO Auto-generated method stub
+		return "POLL";
+	}
+
 	private String userName;
 	private String password;
 	
