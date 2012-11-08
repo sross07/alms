@@ -43,7 +43,6 @@ Available HTTP Methods
 Get Message
 -------------
 
-
 1. Client sends query to ALMS to get all available messages
 	a. Security Credentials (based on header values)
 	b. Header variable to specify type of messages to receive
