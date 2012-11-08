@@ -1,3 +1,5 @@
+//DS is it
+
 package org.alms.core;
 
 
@@ -6,19 +8,19 @@ import java.security.NoSuchAlgorithmException;
 import org.alms.DataAccess.UserManager;
 import org.alms.beans.UserAccount;
 
-public class UserController 
+public class UserController
 {
-	public static final String SALT = "ALMS-ChangingTheWorld";	
-	
+	public static final String SALT = "ALMS-ChangingTheWorld";
+
 	public Boolean login(String username, String password) {
 		Boolean isAuthenticated = false;
 
 		// remember to use the same SALT value use used while storing password
 		// for the first time.
 		String saltedPassword = SALT + password;
-		String hashedPassword = generateHash(saltedPassword);		
-		
-		try 
+		String hashedPassword = generateHash(saltedPassword);
+
+		try
 		{
 			UserManager userManager = new UserManager();
 			if (userManager.DoesUserExist(username, hashedPassword))
@@ -32,32 +34,32 @@ public class UserController
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 		return isAuthenticated;
-	}	
-	
+	}
+
 	public void signup(UserAccount userAccount)
 	{
-		try 
+		try
 		{
 			UserManager userManager = new UserManager();
 			String saltedPassword = SALT + userAccount.getPassword();
 			String hashedPassword = generateHash(saltedPassword);
-			
+
 			UserAccount CornellAccount = new UserAccount();
 			CornellAccount.setUserName(userAccount.getUserName());
 			CornellAccount.setPassword(hashedPassword);
 			CornellAccount.setAccountOID(userAccount.getAccountOID());
-			
-			userManager.AddUser(CornellAccount);				
+
+			userManager.AddUser(CornellAccount);
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
-		
+		}
+
 	}
-	
+
 	private static String generateHash(String input) {
 		StringBuilder hash = new StringBuilder();
 
@@ -71,7 +73,7 @@ public class UserController
 				hash.append(digits[(b & 0xf0) >> 4]);
 				hash.append(digits[b & 0x0f]);
 			}
-		} catch (NoSuchAlgorithmException e) 
+		} catch (NoSuchAlgorithmException e)
 		{
 			// handle error here.
 		}
