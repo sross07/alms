@@ -36,10 +36,10 @@
 				<fieldset class="form-submit">
 					<div class="form-pair">
 						<div class="form-item">
-							<label for="uid">User Name:<!-- NetID --></label>
+							<label for="uid">User Name:</label>
 						</div>
 						<div class="form-value">
-							<input name="userName" id="uid" type="text" size="30"  />
+							<input name="userName" id="userName" type="text" size="30"  />
 						</div>
 					</div>
 
@@ -48,7 +48,7 @@
 							<label for="pid">Password:</label>
 						</div>
 						<div class="form-value">
-							<input id="passWord" name="pid" type="password" size="30" autocomplete="off" />
+							<input id="passWord" name="passWord" type="password" size="30" autocomplete="off" />
 						</div>
 					</div>
 
@@ -57,14 +57,14 @@
 							<label for="oid">MSH 6:</label>
 						</div>
 						<div class="form-value">
-							<input id="accountOid" name="oid" type="text" size="30" />
+							<input id="accountOid" name="accountOid" type="text" size="30" />
 						</div>
 					</div>
 
 					<div class="form-pair">
 						<div class="form-value">
-							<input  type="submit" class="input-submit" name="Submit" value="Login" alt="Login" />
-							<input  type="reset" class="input-reset" name="Reset" value="Reset" alt="Reset" />
+							<input  type="submit" class="input-submit" name="Submit" value="Register" alt="Login" />
+<!-- 							<input  type="reset" class="input-reset" name="Reset" value="Reset" alt="Reset" /> -->
 							<input type="hidden" name="submit" value="true">
 						</div>
 					</div>
