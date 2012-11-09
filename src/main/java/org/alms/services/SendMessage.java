@@ -19,6 +19,7 @@ import org.alms.validators.VocabularyValidator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.alms.messages.*;
+import org.alms.core.*;
 
 @Path("/SendMessage")
 public class SendMessage 
@@ -49,11 +50,12 @@ public class SendMessage
 			return ResponseMessage;
 		}
 		else
-		{
-			return "Push - Not Implemented";
+		{			
+			PushController push=new PushController();			
+			push.SendMessage();
 			
+			return "Push - Not Implemented";			
 		}
-
 	}
 	
 	private IMsg doWorkForMessageType(HttpHeaders headers, String incomingMessage)
