@@ -9,6 +9,8 @@ import com.sun.jersey.test.framework.WebAppDescriptor;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.alms.core.*;
+
 public class ServicesTest extends JerseyTest 
 {
 	 public ServicesTest() throws Exception 
@@ -21,7 +23,24 @@ public class ServicesTest extends JerseyTest
     public void testHelloWorld() {
         WebResource webResource = resource();
         String responseMsg = webResource.path("test").get(String.class);
-        assertEquals("Hello, World!", responseMsg);
+      	assertEquals("Hello, World!  Services are working, the paths are: services/AckMessage/{uid} ; serivces/GetMessages; services/SendMessage", responseMsg);
+
+    }
+    
+    @Test
+    public void testPush() {
+        //WebResource webResource = resource();
+        //String responseMsg = webResource.path("SendMessage").get(String.class);
+        //assertEquals("Hello, World!", responseMsg);
+    	
+        WebResource webResource = resource();
+        //String responseMsg = webResource.path("SendMessage").get(String.class);
+        
+        //webResource.path("test");
+    	
+    	PushController pusher = new PushController(); 	
+    	assertEquals("hi", pusher.SendMessage(webResource));
+    	
     }
 
 }

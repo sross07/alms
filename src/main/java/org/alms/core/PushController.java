@@ -1,36 +1,26 @@
 package org.alms.core;
 
-import java.io.*;
-import java.net.*;
+import javax.ws.rs.core.MediaType;
+//import javax.ws.rs.core.Response.Status.Family;
+//import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+//import com.sun.jersey.api.representation.Form;
+
 
 public class PushController
 {	
-	public void SendMessage() throws IOException
+	public String SendMessage(WebResource r) 
 	{
-        URL url = new URL("");
-        String query = "";
+			
+		/*ClientResponse response = r.path("test").get(ClientResponse.class);*/		
+		ClientResponse response = r.path("SendMessage").header("username", "scott")
+				.header("password", "rules")
+				.header("SchemaValidation", "NAHLNResultBaseMessage")
+				.type(MediaType.APPLICATION_XML)
+				.put(ClientResponse.class, "<xml>TEST</xml>");	
+				
 
-        //make connection
-        URLConnection urlc = url.openConnection();
-
-        //use post mode
-        urlc.setDoOutput(true);
-        urlc.setAllowUserInteraction(false);
-
-        //send query
-        PrintStream ps = new PrintStream(urlc.getOutputStream());
-        ps.print(query);
-        ps.close();
-
-        //get result
-        BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
-        
-        String l = null;
-        while ((l=br.readLine())!=null) 
-        {
-            System.out.println(l);
-        }
-        
-        br.close();		
+		return response.getEntity(String.class);
 	}
 }

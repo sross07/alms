@@ -52,7 +52,7 @@ public class SendMessage
 		else
 		{			
 			PushController push=new PushController();			
-			push.SendMessage();
+			//push.SendMessage();
 			
 			return "Push - Not Implemented";			
 		}
