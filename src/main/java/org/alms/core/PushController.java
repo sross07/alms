@@ -10,12 +10,15 @@ import com.sun.jersey.api.client.WebResource;
 
 public class PushController
 {	
+	
 	public String SendMessage(WebResource r) 
 	{
 			
+		
+		
 		/*ClientResponse response = r.path("test").get(ClientResponse.class);*/		
-		ClientResponse response = r.path("SendMessage").header("username", "scott")
-				.header("password", "rules")
+		ClientResponse response = r.path("SendMessage").header("username", "Scott")
+				.header("password", "CornellRules")
 				.header("SchemaValidation", "NAHLNResultBaseMessage")
 				.type(MediaType.APPLICATION_XML)
 				.put(ClientResponse.class, "<xml>TEST</xml>");	
