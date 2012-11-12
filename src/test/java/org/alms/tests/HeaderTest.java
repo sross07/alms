@@ -58,7 +58,6 @@ public class HeaderTest extends JerseyTest
 				.put(ClientResponse.class, "<xml>TEST</xml>");	
 		
 		assertFalse(response.getEntity(String.class).equals("AE- "));
-					
 	}
 	
 /*	@Test 
