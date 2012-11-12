@@ -33,8 +33,6 @@ public class SendMessage
 	public String SendMessageWorker(String incomingMessage, @Context HttpHeaders headers)
 			throws Exception 
 	{	
-		
-		
 		// check headers		
 		// Check schema		
 		
@@ -42,8 +40,7 @@ public class SendMessage
 		{
 			//String ResponseMessage = AckMessage.getHL7AckMessage(messageData);			
 			return "AE- " + this.headerError;
-		}
-	
+		}	
 		
 		IMsg messageData = doWorkForMessageType(headers, incomingMessage);
 		
