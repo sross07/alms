@@ -19,6 +19,7 @@ import org.alms.validators.VocabularyValidator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.alms.messages.*;
+import org.alms.messages.hl7.*;
 import org.alms.core.*;
 
 @Path("/SendMessage")
@@ -34,12 +35,15 @@ public class SendMessage
 			throws Exception 
 	{	
 		// check headers		
-		// Check schema		
+		// check schema		
 		
 		if (CheckHeadersError(headers))
 		{
-			//String ResponseMessage = AckMessage.getHL7AckMessage(messageData);			
-			return "AE- " + this.headerError;
+			
+			AckGenerator AckMessage = 
+					new AckGenerator(false,this.headerError);
+					
+			return AckMessage.HeaderIssue();
 		}	
 		
 		IMsg messageData = doWorkForMessageType(headers, incomingMessage);
