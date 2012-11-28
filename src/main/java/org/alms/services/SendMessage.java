@@ -51,7 +51,7 @@ public class SendMessage
 		if (messageData.receiverTransmissionType() == "POLL")
 		{
 			IValidator msgValidator = new SimpleValidator();		
-			msgValidator= new SecurityValidator(msgValidator, messageData);	
+			msgValidator = new SecurityValidator(msgValidator, messageData);	
 			msgValidator = new SchemaValidator(msgValidator, messageData);
 			msgValidator = new ReceiverValidator(msgValidator, messageData);
 			msgValidator = new VocabularyValidator(msgValidator, messageData);
