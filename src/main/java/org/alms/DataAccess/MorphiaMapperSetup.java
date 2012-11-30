@@ -24,13 +24,33 @@ public class MorphiaMapperSetup
 		this.Setup();		
 	}
 	
+	
+	/**
+	 * 
+	 * Implemented a authentication on MongoDB
+	 * Added a property in configuration to switch "true" / "false" in auth is on 
+	 * This allows local development and flexibility 
+	 * 
+	 * @throws Exception
+	 */
 	private void Setup() throws Exception {	
 		
 		ApplicationConfig c = ApplicationConfig.getApplicationConfig();			
-		this.m = new Mongo();
+		this.m = new Mongo(c.getProperty("DatabaseUrl"));
+		
+				
 		Morphia morphia = new Morphia();
 		morphia.map(org.alms.beans.UserAccount.class).map(org.alms.beans.MessageInfo.class).map(org.alms.beans.PollMessage.class);		
-		ds=morphia.createDatastore(m,c.getProperty("DataBase"));		
+				
+		if (c.getProperty("MongoAuthMode").equals("true"))
+		{
+			this.ds=morphia.createDatastore(m,c.getProperty("DataBase"), c.getProperty("MongoUsername"), c.getProperty("MongoPassword").toCharArray());
+		}
+		else
+		{
+			this.ds=morphia.createDatastore(m,c.getProperty("DataBase"));
+		}
+	
 	}	
 
 }
