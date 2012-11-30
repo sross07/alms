@@ -22,7 +22,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Account</title>
 
-<link rel="stylesheet" type="text/css" media="all" href="salms.css"  />
+<link rel="stylesheet" type="text/css" media="all" href="Styles/salms.css"  />
 </head>
 <body>
 	<div id="content">
