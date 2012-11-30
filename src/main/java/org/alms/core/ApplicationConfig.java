@@ -18,9 +18,7 @@ public class ApplicationConfig
         try {
 
             InputStream in = this.getClass().getClassLoader().getResourceAsStream("config.properties");
-
             properties = new Properties();
-
             properties.load(in);
 
         } catch (IOException ex) 
