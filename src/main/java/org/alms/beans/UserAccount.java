@@ -10,7 +10,16 @@ public class UserAccount
 	private String userName;
 	private String password;
 	private String AccountOID;
+	private DestinationInformation userDestinationInfo;	
 	
+	public DestinationInformation getUserDestinationInfo() {
+		return userDestinationInfo;
+	}
+
+	public void setUserDestinationInfo(DestinationInformation userDestinationInfo) {
+		this.userDestinationInfo = userDestinationInfo;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

@@ -12,10 +12,7 @@ public class PushController
 {	
 	
 	public String SendMessage(WebResource r) 
-	{
-			
-		
-		
+	{	
 		/*ClientResponse response = r.path("test").get(ClientResponse.class);*/		
 		ClientResponse response = r.path("SendMessage").header("username", "Scott")
 				.header("password", "CornellRules")
@@ -25,5 +22,13 @@ public class PushController
 				
 
 		return response.getEntity(String.class);
+	}
+	
+	public String SendMessage()
+	{
+		
+		
+		
+		return "Not Implemented";		
 	}
 }

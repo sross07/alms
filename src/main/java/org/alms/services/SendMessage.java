@@ -19,7 +19,6 @@ import org.alms.validators.VocabularyValidator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.alms.messages.*;
-import org.alms.messages.hl7.*;
 import org.alms.core.*;
 
 @Path("/SendMessage")
@@ -51,7 +50,7 @@ public class SendMessage
 		if (messageData.receiverTransmissionType() == "POLL")
 		{
 			IValidator msgValidator = new SimpleValidator();		
-			msgValidator= new SecurityValidator(msgValidator, messageData);	
+			msgValidator = new SecurityValidator(msgValidator, messageData);	
 			msgValidator = new SchemaValidator(msgValidator, messageData);
 			msgValidator = new ReceiverValidator(msgValidator, messageData);
 			msgValidator = new VocabularyValidator(msgValidator, messageData);
@@ -65,11 +64,8 @@ public class SendMessage
 		}
 		else
 		{			
-			// PushController push=new PushController();	
-			
-			// push.SendMessage();
-			
-			return "Push - Not Implemented";			
+			PushController push=new PushController();	
+			return push.SendMessage();				
 		}
 	}
 	
@@ -97,24 +93,10 @@ public class SendMessage
 		
 		if (map.containsKey("SchemaValidation") 
 				&& map.containsKey("username") 
-				&& map.containsKey("password"))
-		{
-			// Make sure schema Validation is actually in system			
-			ApplicationContext context =
-					new ClassPathXmlApplicationContext(new String[] {"messageType.xml"});
-						
-			String schema= map.get("SchemaValidation").toString().replace("[", "").replace("]", "");
-			
-			String[] beanNames= context.getBeanDefinitionNames();
-			
-			for(String item : beanNames )
-			{
-				if (schema.equals(item))
-				{
-					return false;
-				}
-			}						
-			return true;
+				&& map.containsKey("password")
+				&& SchemaExist( map.get("SchemaValidation").toString().replace("[", "").replace("]", "")))
+		{				
+			return false;
 		}
 		else
 		{			
@@ -123,5 +105,25 @@ public class SendMessage
 		}		
 	}
 	
+	private boolean SchemaExist(String schemaName)
+	{
+		
+		// Make sure schema Validation is actually in system			
+		ApplicationContext context =
+				new ClassPathXmlApplicationContext(new String[] {"messageType.xml"});		
+	
+		
+		String[] beanNames= context.getBeanDefinitionNames();
+		
+		for(String item : beanNames )
+		{
+			if (schemaName.equals(item))
+			{
+				return true;
+			}
+		}	
+		
+		return false;
+	}
 
 }
