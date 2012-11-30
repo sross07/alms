@@ -106,7 +106,6 @@ public class SendMessage
 			return true;
 		}		
 	}
-
 	
 	private boolean SchemaExist(String schemaName)
 	{
@@ -128,6 +127,5 @@ public class SendMessage
 		
 		return false;
 	}
-	
 
 }
