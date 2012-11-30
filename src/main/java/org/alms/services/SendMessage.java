@@ -19,8 +19,6 @@ import org.alms.validators.VocabularyValidator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.alms.messages.*;
-import org.alms.messages.hl7.*;
-import org.alms.core.*;
 
 @Path("/SendMessage")
 public class SendMessage 
@@ -97,30 +95,38 @@ public class SendMessage
 		
 		if (map.containsKey("SchemaValidation") 
 				&& map.containsKey("username") 
-				&& map.containsKey("password"))
-		{
-			// Make sure schema Validation is actually in system			
-			ApplicationContext context =
-					new ClassPathXmlApplicationContext(new String[] {"messageType.xml"});
-						
-			String schema= map.get("SchemaValidation").toString().replace("[", "").replace("]", "");
-			
-			String[] beanNames= context.getBeanDefinitionNames();
-			
-			for(String item : beanNames )
-			{
-				if (schema.equals(item))
-				{
-					return false;
-				}
-			}						
-			return true;
+				&& map.containsKey("password")
+				&& SchemaExist( map.get("SchemaValidation").toString().replace("[", "").replace("]", "")))
+		{				
+			return false;
 		}
 		else
 		{			
 			this.headerError= "Specfic Header Values are missing. You need username, password, and SchemaValidation.  Case sensitive.";
 			return true;
 		}		
+	}
+
+	
+	private boolean SchemaExist(String schemaName)
+	{
+		
+		// Make sure schema Validation is actually in system			
+		ApplicationContext context =
+				new ClassPathXmlApplicationContext(new String[] {"messageType.xml"});		
+	
+		
+		String[] beanNames= context.getBeanDefinitionNames();
+		
+		for(String item : beanNames )
+		{
+			if (schemaName.equals(item))
+			{
+				return true;
+			}
+		}	
+		
+		return false;
 	}
 	
 
