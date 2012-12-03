@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	Leroy was here <br><br>
 <%!String message = "Hello, World.";%> <%= message%> <%= new java.util.Date() %>
 </body>
 </html>
