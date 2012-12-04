@@ -1,3 +1,13 @@
+#-------------------------------------------------------------------------------
+# Copyright (c) 2012 Scott Ross.
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the GNU Lesser Public License v2.1
+# which accompanies this distribution, and is available at
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# 
+# Contributors:
+#     Scott Ross - initial API and implementation
+#-------------------------------------------------------------------------------
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -22,7 +32,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Account</title>
 
-<link rel="stylesheet" type="text/css" media="all" href="salms.css"  />
+<link rel="stylesheet" type="text/css" media="all" href="Styles/salms.css"  />
 </head>
 <body>
 	<div id="content">
