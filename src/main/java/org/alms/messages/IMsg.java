@@ -25,6 +25,5 @@ public interface IMsg
 	public String getPassword();
 	public String getXSDLocation();
 	public String getIncomingMessage();
-	public String receiverTransmissionType();
-	
+	public String receiverTransmissionType();	
 }
