@@ -47,8 +47,7 @@ public class SendMessage
 		// check schema		
 		
 		if (CheckHeadersError(headers))
-		{
-			
+		{			
 			AckGenerator AckMessage = 
 					new AckGenerator(false,this.headerError);
 					
@@ -59,6 +58,7 @@ public class SendMessage
 		
 		if (messageData.receiverTransmissionType() == "POLL")
 		{
+			
 			IValidator msgValidator = new SimpleValidator();		
 			msgValidator = new SecurityValidator(msgValidator, messageData);	
 			msgValidator = new SchemaValidator(msgValidator, messageData);
@@ -70,12 +70,15 @@ public class SendMessage
 			
 			org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);	
 			
-			return ResponseMessage;
+			return ResponseMessage;	
+			
 		}
 		else
-		{			
+		{		
+			MultivaluedMap<String, String> map = headers.getRequestHeaders();	
+			
 			PushController push=new PushController();	
-			return push.SendMessage();				
+			return push.SendMessage(messageData, map.get("SchemaValidation").toString().replace("[", "").replace("]", ""));			
 		}
 	}
 	

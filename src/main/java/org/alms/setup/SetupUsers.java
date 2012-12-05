@@ -10,12 +10,22 @@
  ******************************************************************************/
 package org.alms.setup;
 
+import java.util.ArrayList;
+
+import javax.ws.rs.core.MultivaluedMap;
+
 import org.alms.beans.UserAccount;
 import org.alms.core.*;
+import org.alms.DataAccess.*;
+
+import com.mongodb.BasicDBObject;
+import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 public class SetupUsers {
 	
 	public static void main(String[] args) throws Exception {
+		
+		/*
 		System.out.println("Creating Default Accounts ...");	
 		
 		UserAccount CornellAccount = new UserAccount();
@@ -27,8 +37,35 @@ public class SetupUsers {
 		userController.signup(CornellAccount);
 		
 		System.out.println(" .... Cornell Account Added");
+		*/
+		
+		
+		UserManager manager = new UserManager();
+		
+		UserAccount CornellAccount= manager.GetUser("NAHLN");
+		CornellAccount.setHttpVerb("PUT");
+		CornellAccount.setDestinationType("PUSH");	
+		
+		CornellAccount.setURL("http://localhost:8080/alms/services/TestHarness");
+		
+		CornellAccount.setProtocol("HTTP");
+		
+		ArrayList<org.alms.beans.Header> headerList = new ArrayList<org.alms.beans.Header>();		
+		
+		org.alms.beans.Header userHd = new org.alms.beans.Header();		
+		userHd.setVariableName("user");
+		userHd.setValue("scott");
+		
+		org.alms.beans.Header userPw = new org.alms.beans.Header();		
+		userPw.setVariableName("password");
+		userPw.setValue("abc123");
+		
+		headerList.add(userHd);
+		headerList.add(userPw);
+				
+		CornellAccount.setHeaderVariables(headerList);		
+		manager.AddUser(CornellAccount);		
 	}
-
 }
 
 

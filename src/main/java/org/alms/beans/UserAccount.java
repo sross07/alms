@@ -9,6 +9,8 @@
  *     Scott Ross - initial API and implementation
  ******************************************************************************/
 package org.alms.beans;
+import java.util.ArrayList;
+
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import org.bson.types.ObjectId;
@@ -20,14 +22,50 @@ public class UserAccount
 	private String userName;
 	private String password;
 	private String AccountOID;
-	private DestinationInformation userDestinationInfo;	
+	private String destinationType;
+	private String httpVerb;
+	private String URL;	
+	private String protocol;
+	private ArrayList<Header> HeaderVariables;
 	
-	public DestinationInformation getUserDestinationInfo() {
-		return userDestinationInfo;
+	
+	public String getProtocol() {
+		return protocol;
 	}
 
-	public void setUserDestinationInfo(DestinationInformation userDestinationInfo) {
-		this.userDestinationInfo = userDestinationInfo;
+	public void setProtocol(String protocol) {
+		this.protocol = protocol;
+	}
+	public ArrayList<Header> getHeaderVariables() {
+		return HeaderVariables;
+	}
+
+	public void setHeaderVariables(ArrayList<Header> headerVariables) {
+		HeaderVariables = headerVariables;
+	}
+
+	public String getDestinationType() {
+		return destinationType;
+	}
+
+	public void setDestinationType(String destinationType) {
+		this.destinationType = destinationType;
+	}
+
+	public String getHttpVerb() {
+		return httpVerb;
+	}
+
+	public void setHttpVerb(String httpVerb) {
+		this.httpVerb = httpVerb;
+	}
+
+	public String getURL() {
+		return URL;
+	}
+
+	public void setURL(String uRL) {
+		URL = uRL;
 	}
 
 	public String getUserName() {

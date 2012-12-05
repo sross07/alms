@@ -18,6 +18,7 @@ import 	org.alms.DataAccess.*;
 import 	org.alms.beans.*;
 
 public class MessagePoll implements IMsg {
+	
 
 	@Override
 	public String receiverTransmissionType() {
@@ -103,5 +104,4 @@ public class MessagePoll implements IMsg {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
