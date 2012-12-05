@@ -57,6 +57,22 @@ public class UserManager {
 		}
 	}
 	
+	public UserAccount GetUserByUniversialId(String id)
+	{
+		Query<UserAccount> q = ds.createQuery(org.alms.beans.UserAccount.class).filter("AccountOID =", id);
+		
+		List<UserAccount> accountList = q.asList();
+		
+		if (accountList.size() == 1)
+		{			
+			return accountList.get(0);
+		}
+		else
+		{		
+			return null;
+		}
+	}
+	
 	public UserAccount GetUser(String UserName)
 	{		
 		List<UserAccount> accountList = this.ds.find(org.alms.beans.UserAccount.class, "userName =", UserName).asList();		
@@ -67,4 +83,6 @@ public class UserManager {
 	{		
 		this.ds.save(account);
 	}
+	
+	
 }

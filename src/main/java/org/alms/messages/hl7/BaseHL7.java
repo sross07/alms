@@ -10,6 +10,9 @@
  ******************************************************************************/
 package org.alms.messages.hl7;
 
+import org.alms.DataAccess.UserManager;
+import org.alms.beans.RelatedParty;
+import org.alms.beans.UserAccount;
 import org.alms.messages.*;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
@@ -112,10 +115,24 @@ public abstract class BaseHL7 implements IMsg
 	}
 	
 	@Override
-	public String receiverTransmissionType() {
-		// TODO Auto-generated method stub
-		return "POLL";
-	}
+	public String receiverTransmissionType() 
+	{					
+		UserManager manager;			
+		org.alms.beans.RelatedParty rp = this.getMsgDestination();
+		
+		try 
+		{
+			manager = new UserManager();
+			UserAccount acc = manager.GetUserByUniversialId(rp.getNamespaceID());				
+			return acc.getDestinationType();					
+		} 
+		catch (Exception e) 
+		{
+			return "POLL";
+		}
+
+	}	
 	
+
 	public abstract Boolean checkMessageVocubulary();	
 }
