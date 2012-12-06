@@ -23,11 +23,8 @@ import javax.net.ssl.SSLSocketFactory;
 public class SendHTTPSMessage
 		implements ISendMessage
 {
-	
-	private String username;
-	private String password;
-	private RelatedParty destination;
-	
+
+	private RelatedParty destination;	
 
 	@Override
 	public String DeliverMessage(IMsg messageData, String SchemaValidation)  
@@ -40,8 +37,7 @@ public class SendHTTPSMessage
 		try
 		{
 			setDestination(messageData);
-			UserAccount acc = getUser(messageData);
-			serviceDetails(acc);
+			UserAccount acc = getUser(messageData);			
 			
 			// Open a secure connection.
 			URL url = new URL( acc.getURL());	      	  
@@ -51,11 +47,10 @@ public class SendHTTPSMessage
 		    // Set up the connection properties		      
 		    con.setRequestMethod(acc.getHttpVerb());
 		    con.setDoOutput(true);
-		    con.setReadTimeout(10000);  
-		    con.setRequestProperty("Content-Type", "application/xml; charset=utf-8");
-		    con.setRequestProperty("username", this.username);
-		    con.setRequestProperty("password", this.password);
-		    con.setRequestProperty("SchemaValidation", SchemaValidation);	  	
+		    con.setReadTimeout(10000); 
+
+		    con=addRequestProperties(con, acc);
+		    con.setRequestProperty("SchemaValidation", SchemaValidation);
 		    
 		    con.connect();
 		    
@@ -82,6 +77,16 @@ public class SendHTTPSMessage
 		}		
 	}
 	
+	private HttpsURLConnection addRequestProperties(HttpsURLConnection con,UserAccount acc )
+	{
+		for (Header hd : acc.getHeaderVariables())
+		{
+			con.setRequestProperty(hd.getVariableName(), hd.getValue());		
+		}
+		
+		return con;
+	}
+	
 	private void setDestination(IMsg messageData)
 	{
 		this.destination = messageData.getMsgDestination();		
@@ -93,24 +98,6 @@ public class SendHTTPSMessage
 		
 		UserManager manager = new UserManager();
 		return manager.GetUserByUniversialId(this.destination.getNamespaceID());
-	}
-	
-	private void serviceDetails(UserAccount acc)
-	{
-		
-		for (Header hd : acc.getHeaderVariables())
-		{
-			if (hd.getVariableName().equals("username"))
-			{
-				this.username=hd.getValue();
-			}
-			
-			if (hd.getVariableName().equals("password"))
-			{
-				this.password=hd.getValue();
-			}
-		}
-		
 	}	
 	
 	private SSLSocketFactory getFactory( File pKeyFile, String pKeyPassword ) throws  Exception   
@@ -128,5 +115,5 @@ public class SendHTTPSMessage
 		  context.init(keyManagerFactory.getKeyManagers(), null, new SecureRandom());
 	
 		  return context.getSocketFactory();
-	}
+	}	
 }
