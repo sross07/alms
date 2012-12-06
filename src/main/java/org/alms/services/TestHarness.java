@@ -1,6 +1,8 @@
 package org.alms.services;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
@@ -26,15 +28,28 @@ import org.alms.core.*;
 public class TestHarness 
 {
 	
-	@PUT
+	@POST
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.APPLICATION_XML)
-	public String TestHarnessWorker(String incomingMessage, @Context HttpHeaders headers)
+	public String TestHarnessWorker(String content, @Context HttpHeaders headers)
 			throws Exception 
 	{	
 		
 		MultivaluedMap<String, String> map = headers.getRequestHeaders();		
-		return "I LOVE THIS SHIATE" + map.get("username") + " " + map.get("password")+ " " + map.get("SchemaValidation") + " " + incomingMessage;
+		return "I LOVE THIS STUFF" + map.get("username") 
+				+ " " + map.get("password")+ " " 
+				+ map.get("SchemaValidation") + " " 
+				+ content;
+		
+
+	}
+
+	
+	@GET
+	public String TestHarnessWorker()
+			throws Exception 
+	{		
+		return "hi";
 	}
 
 }

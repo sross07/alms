@@ -46,6 +46,9 @@ public class SetupUsers {
 		CornellAccount.setHttpVerb("PUT");
 		CornellAccount.setDestinationType("PUSH");	
 		
+		CornellAccount.setFileStore("E:\\alms_keystores\\salms");
+		CornellAccount.setFileStorePW("salms_07");
+		
 		CornellAccount.setURL("http://localhost:8080/alms/services/TestHarness");
 		
 		CornellAccount.setProtocol("HTTP");
@@ -53,7 +56,7 @@ public class SetupUsers {
 		ArrayList<org.alms.beans.Header> headerList = new ArrayList<org.alms.beans.Header>();		
 		
 		org.alms.beans.Header userHd = new org.alms.beans.Header();		
-		userHd.setVariableName("user");
+		userHd.setVariableName("username");
 		userHd.setValue("scott");
 		
 		org.alms.beans.Header userPw = new org.alms.beans.Header();		
