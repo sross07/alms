@@ -26,9 +26,27 @@ public class UserAccount
 	private String httpVerb;
 	private String URL;	
 	private String protocol;
+	private String fileStore;
+	private String fileStorePW;
 	private ArrayList<Header> HeaderVariables;
 	
 	
+	public String getFileStore() {
+		return fileStore;
+	}
+
+	public void setFileStore(String fileStore) {
+		this.fileStore = fileStore;
+	}
+
+	public String getFileStorePW() {
+		return fileStorePW;
+	}
+
+	public void setFileStorePW(String fileStorePW) {
+		this.fileStorePW = fileStorePW;
+	}
+
 	public String getProtocol() {
 		return protocol;
 	}

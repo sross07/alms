@@ -50,7 +50,7 @@ public class MessageInfoManager
 				this.ds.find(org.alms.beans.MessageInfo.class, "destinationOid =", Receiver).asList();
 		
 		return messageList;
-	}	
+	}
 	
 	public void deleteMessage(String msgId)
 	{
