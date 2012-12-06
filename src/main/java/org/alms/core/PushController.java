@@ -16,27 +16,18 @@ import org.alms.validators.ReceiverValidator;
 import org.alms.validators.SchemaValidator;
 import org.alms.validators.SecurityValidator;
 import org.alms.validators.SimpleValidator;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import org.alms.beans.*;
 import org.alms.DataAccess.*;
+
+import org.alms.core.protocols.*;
 
 
 public class PushController
 {	
 	
-	private String schemaValidation;
-	
-
 	public String SendMessage(IMsg messageData, String schema) throws Exception
 	{
-		
-		this.schemaValidation=schema;
+				
 		String ResponseMessage="";	
 		
 		IValidator msgValidator = new SimpleValidator();		
@@ -46,7 +37,23 @@ public class PushController
 		
 		if (msgValidator.validate())
 		{
-			ResponseMessage=DeliverMessageHTTP(messageData);		
+			ISendMessage msgController;
+			
+			UserManager manager = new UserManager();			
+			UserAccount destinationAccount = manager.GetUserByUniversialId(messageData.getMsgDestination().getNamespaceID());	 
+			
+			if (destinationAccount.getProtocol().equals("HTTP"))
+			{
+				msgController= new SendHTTPMessage();
+				
+			}
+			else
+			{
+				msgController= new SendHTTPSMessage();
+			}
+			
+			ResponseMessage=msgController.DeliverMessage(messageData, schema);					
+			
 		}
 		else // Message Failed Validation
 		{
@@ -54,79 +61,15 @@ public class PushController
 			ResponseMessage = AckMessage.getHL7AckMessage(messageData);					
 		}	
 		
-		org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);			
+		
+		//
+		//Messages will not be stored during "Push"		
+		//org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);
+		//
+		
 		return ResponseMessage;				
 	}	
 	
-	/*** NEED TO REFACTOR THIS ***/
-	
-	private String DeliverMessageHTTP(IMsg messageData)
-	{	
-		String username="";
-		String password="";
-		
-		URL serverAddress = null;
-		HttpURLConnection  connection = null;
-		OutputStreamWriter wr = null;
-		BufferedReader rd  = null;
-		StringBuilder sb = null;
-		String line = null;
-	      
-		try
-		{
-			RelatedParty destination = messageData.getMsgDestination();			 
-			UserManager manager = new UserManager();
-			
-			UserAccount destinationAccount = manager.GetUserByUniversialId(destination.getNamespaceID());	
-			
-			for (Header hd : destinationAccount.getHeaderVariables())
-			{
-				if (hd.getVariableName().equals("username"))
-				{
-					username=hd.getValue();
-				}
-				
-				if (hd.getVariableName().equals("password"))
-				{
-					password=hd.getValue();
-				}
-			}
-			
-			serverAddress = new URL(destinationAccount.getURL());
-	        connection = null;
-	          
-	        //Set up the initial connection
-	        connection = (HttpURLConnection) serverAddress.openConnection();
-	        connection.setRequestMethod(destinationAccount.getHttpVerb());
-	        connection.setDoOutput(true);
-	        connection.setReadTimeout(10000);       
-	     
-	        connection.setRequestProperty("username", username);
-	        connection.setRequestProperty("password", password);
-	        connection.setRequestProperty("SchemaValidation", this.schemaValidation);	        
-	        
-	        connection.connect();
 
-	        wr = new OutputStreamWriter(connection.getOutputStream());
-	        wr.write(messageData.getIncomingMessage());
-	        wr.flush();
-	        
-	        //read the result from the server
-	        rd  = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-	        sb = new StringBuilder();
-	        
-	        while ((line = rd.readLine()) != null)
-	        {
-	            sb.append(line);
-	        }
-	        
-	        return sb.toString();	
-		}
-		
-		catch(Exception e)
-		{
-			return e.toString();
-		}	
-		
-	}
+	
 }
