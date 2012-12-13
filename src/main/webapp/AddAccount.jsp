@@ -54,7 +54,7 @@
 
 					<div class="form-pair">
 						<div class="form-item">
-							<label for="oid">MSH 6:</label>
+							<label for="oid">MSH 4:</label>
 						</div>
 						<div class="form-value">
 							<input id="accountOid" name="accountOid" type="text" size="30" />
