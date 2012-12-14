@@ -10,11 +10,11 @@
  ******************************************************************************/
 package org.alms.messages.hl7;
 
-public class NAHLNAvainInfluBase extends BaseHL7 {
+public class CsfBaseResult extends BaseHL7 {
 
 	@Override
 	public Boolean checkMessageVocubulary() {
-		// TODO Auto-generated method stub
+		// TODO Implement logic to check "CSF vocubulary"
 		return true;
 	}
 
