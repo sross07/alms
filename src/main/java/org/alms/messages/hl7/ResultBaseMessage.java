@@ -10,7 +10,7 @@
  ******************************************************************************/
 package org.alms.messages.hl7;
 
-public class NAHLNResultBaseMessage extends BaseHL7 
+public class ResultBaseMessage extends BaseHL7 
 {
 	@Override
 	public Boolean checkMessageVocubulary() {
