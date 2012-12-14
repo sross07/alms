@@ -1,6 +1,6 @@
 package org.alms.messages.hl7;
 
-public class NAHLNOrderMessage extends BaseHL7  
+public class ExternalOrderMsg extends BaseHL7 
 {
 	@Override
 	public Boolean checkMessageVocubulary() {
