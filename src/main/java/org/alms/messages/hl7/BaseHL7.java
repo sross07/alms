@@ -11,7 +11,6 @@
 package org.alms.messages.hl7;
 
 import org.alms.DataAccess.UserManager;
-import org.alms.beans.RelatedParty;
 import org.alms.beans.UserAccount;
 import org.alms.messages.*;
 import javax.ws.rs.core.HttpHeaders;
