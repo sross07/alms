@@ -3,7 +3,7 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="NAHLNResultBaseMessage" class="org.alms.messages.hl7.NAHLNResultBaseMessage">
+	<bean id="NAHLNResultBaseMessage" class="org.alms.messages.hl7.ResultBaseMessage">
 		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultBase.xsd"/>
 	</bean> 
 	
@@ -11,19 +11,27 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 		<property name="XSDLocation"  value="D:\\aln\\ALNResult.xsd"/>
 	</bean> 
 	
-	<bean id="NAHLNCsfResultMessage" class="org.alms.messages.hl7.NAHLNCsfBaseResult">
+	<bean id="CsfResultMessage" class="org.alms.messages.hl7.CsfBaseResult">
 		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultCSF.xsd"/>
 	</bean> 
 	
-	<bean id="NAHLNAIResultMessage" class="org.alms.messages.hl7.NAHLNAvainInfluBase">
+	<bean id="AIResultMessage" class="org.alms.messages.hl7.AvainInfluBase">
 		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultWSAI.xsd"/>
 	</bean> 
 	
-	<bean id="NAHLNOrderBase" class="org.alms.messages.hl7.NAHLNOrderMessage">
+	<bean id="OrderBase" class="org.alms.messages.hl7.OrderMessage">
 		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderBase.xsd"/>
 	</bean> 
 	
-	<bean id="NAHLNOrderExternalBase" class="org.alms.messages.hl7.NAHLNExternalOrderMsg">
+	<bean id="OrderExternalBase" class="org.alms.messages.hl7.ExternalOrderMsg">
 		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderExternalBase.xsd"/>
+	</bean> 
+	
+	<bean id="OrderExternalBase" class="org.alms.messages.hl7.ExternalOrderMsg">
+		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderExternalBase.xsd"/>
+	</bean> 
+	
+	<bean id="OrderResponse" class="org.alms.messages.hl7.OrderResponse">
+		<property name="XSDLocation"  value="D:\\aln\\OrderResponse.xsd"/>
 	</bean> 
 </beans>
