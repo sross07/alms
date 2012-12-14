@@ -48,7 +48,7 @@
 							<label for="pid">Password:</label>
 						</div>
 						<div class="form-value">
-							<input id="passWord" name="passWord" type="password" size="30" autocomplete="off" />
+							<input id="passWord" name="passWord" type="password" size="30" />
 						</div>
 					</div>
 

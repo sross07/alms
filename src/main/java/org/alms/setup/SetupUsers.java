@@ -11,15 +11,8 @@
 package org.alms.setup;
 
 import java.util.ArrayList;
-
-import javax.ws.rs.core.MultivaluedMap;
-
 import org.alms.beans.UserAccount;
-import org.alms.core.*;
 import org.alms.DataAccess.*;
-
-import com.mongodb.BasicDBObject;
-import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 public class SetupUsers {
 	

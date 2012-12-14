@@ -19,4 +19,11 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultWSAI.xsd"/>
 	</bean> 
 	
+	<bean id="NAHLNOrderBase" class="org.alms.messages.hl7.NAHLNOrderMessage">
+		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderBase.xsd"/>
+	</bean> 
+	
+	<bean id="NAHLNOrderExternalBase" class="org.alms.messages.hl7.NAHLNExternalOrderMsg">
+		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderExternalBase.xsd"/>
+	</bean> 
 </beans>
