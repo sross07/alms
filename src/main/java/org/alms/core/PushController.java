@@ -57,7 +57,7 @@ public class PushController
 		}
 		else // Message Failed Validation
 		{
-			AckGenerator AckMessage = new AckGenerator(msgValidator.validate(), msgValidator.errorMessage());		
+			AckGenerator AckMessage = new AckGenerator(false, msgValidator.errorMessage(), "CR");		
 			ResponseMessage = AckMessage.getHL7AckMessage(messageData);					
 		}	
 		
