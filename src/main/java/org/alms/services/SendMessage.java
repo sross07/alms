@@ -74,11 +74,9 @@ public class SendMessage
 			else
 			{
 				AckMessage = new AckGenerator(true, msgValidator.errorMessage(), "CE");	
-			}		
+			}			
 			
-			
-			String ResponseMessage = AckMessage.getHL7AckMessage(messageData);		
-			
+			String ResponseMessage = AckMessage.getHL7AckMessage(messageData);			
 			org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);	
 			
 			return ResponseMessage;				
