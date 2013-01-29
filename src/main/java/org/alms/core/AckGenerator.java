@@ -30,7 +30,7 @@ public class AckGenerator
 	private java.text.SimpleDateFormat hl7DateFormat;	
 	private Long uuid;
 	
-	public AckGenerator(boolean response, String errorMessage)
+	public AckGenerator(boolean response, String errorMessage, String errorCode)
 	{		
 		this.response=response;
 		this.errorMessage=errorMessage;
@@ -39,11 +39,11 @@ public class AckGenerator
 		
 		if(response)
 		{
-			this.responseCode="AA";
+			this.responseCode=errorCode;
 		}
 		else
 		{
-			this.responseCode="AE";
+			this.responseCode=errorCode;
 		}
 	}	
 	

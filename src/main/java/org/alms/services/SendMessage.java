@@ -49,7 +49,7 @@ public class SendMessage
 		if (CheckHeadersError(headers))
 		{			
 			AckGenerator AckMessage = 
-					new AckGenerator(false,this.headerError);
+					new AckGenerator(false,this.headerError, "AE");
 					
 			return AckMessage.HeaderIssue();
 		}	
@@ -65,13 +65,23 @@ public class SendMessage
 			msgValidator = new ReceiverValidator(msgValidator, messageData);
 			msgValidator = new VocabularyValidator(msgValidator, messageData);
 			
-			AckGenerator AckMessage = new AckGenerator(msgValidator.validate(), msgValidator.errorMessage());		
+			AckGenerator AckMessage;
+			
+			if(msgValidator.validate())
+			{
+				AckMessage = new AckGenerator(true, msgValidator.errorMessage(), "CA");						
+			}
+			else
+			{
+				AckMessage = new AckGenerator(true, msgValidator.errorMessage(), "CE");	
+			}		
+			
+			
 			String ResponseMessage = AckMessage.getHL7AckMessage(messageData);		
 			
 			org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);	
 			
-			return ResponseMessage;	
-			
+			return ResponseMessage;				
 		}
 		else
 		{		
