@@ -33,8 +33,7 @@ public class MorphiaMapperSetup
 		// Eventually need to do checking..
 		this.Setup();		
 	}
-	
-	
+		
 	/**
 	 * 
 	 * Implemented a authentication on MongoDB
@@ -43,6 +42,7 @@ public class MorphiaMapperSetup
 	 * 
 	 * @throws Exception
 	 */
+	
 	private void Setup() throws Exception {	
 		
 		ApplicationConfig c = ApplicationConfig.getApplicationConfig();			

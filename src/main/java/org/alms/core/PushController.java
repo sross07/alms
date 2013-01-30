@@ -44,8 +44,7 @@ public class PushController
 			
 			if (destinationAccount.getProtocol().equals("HTTP"))
 			{
-				msgController= new SendHTTPMessage();
-				
+				msgController= new SendHTTPMessage();				
 			}
 			else
 			{
@@ -69,7 +68,4 @@ public class PushController
 		
 		return ResponseMessage;				
 	}	
-	
-
-	
 }
