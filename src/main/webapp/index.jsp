@@ -1,0 +1,1 @@
+<jsp:forward page="/UserLogin.action"></jsp:forward>  
