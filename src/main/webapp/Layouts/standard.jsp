@@ -23,7 +23,8 @@
                 <div id="footer">
 
      				<p>
-						<strong>Note:</strong> This page is for registration of an account to test on SALMS.
+						<strong>Note:</strong> This page is for login for SALMS.  SALMS provides a solution 
+						for partnering laboratories interested in messaging.
 					</p>
 					<p>
 						This project is being host by Cornell University for the sole purpose of promoting interoperability in laboratories
