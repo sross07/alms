@@ -23,7 +23,7 @@
                 <div id="footer">
 
      				<p>
-						<strong>Note:</strong> This page is for login for SALMS.  SALMS provides a solution 
+						<strong>Note:</strong> This portal is for use of SALMS partnered laboratories.  SALMS provides a solution 
 						for partnering laboratories interested in messaging.
 					</p>
 					<p>
