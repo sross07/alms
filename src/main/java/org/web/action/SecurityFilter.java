@@ -43,7 +43,16 @@ public class SecurityFilter implements Filter
 			HttpServletResponse response = (HttpServletResponse) servletResponse;
 			
 			if (request.getSession().getAttribute("user") != null) {
-			   filterChain.doFilter(request, response);
+				
+				if (isPublicResource(request))
+				{
+					response.sendRedirect(request.getContextPath() + "/portal.action");
+				}
+				else
+				{
+					filterChain.doFilter(request, response);
+				}
+			   
 			}
 			else if ( isPublicResource(request) ) {
 			   filterChain.doFilter(request, response);

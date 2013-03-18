@@ -10,8 +10,7 @@ import org.alms.beans.*;
 import org.alms.DataAccess.*;
 
 public class UserLoginActionBean extends ALMSActionBean
-{
-	
+{	
 	private static String loginView="/UserLogin.action";
 	private static String PortalPage="/portal.action";		
    
@@ -40,8 +39,7 @@ public class UserLoginActionBean extends ALMSActionBean
 	{	
 		try 
 		{	
-			UserController manager = new UserController();			
-			System.out.println("Username: " + this.username + " Password: " + this.password);
+			UserController manager = new UserController();		
 			
 			if(manager.login(username, password))
 			{
@@ -51,8 +49,7 @@ public class UserLoginActionBean extends ALMSActionBean
 				return new ForwardResolution(PortalPage);  
 			}
 			else
-			{
-				System.out.println("account not logged in");
+			{				
 				return new RedirectResolution(loginView);				
 			}			
 			
