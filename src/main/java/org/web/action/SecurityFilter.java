@@ -34,29 +34,34 @@ public class SecurityFilter implements Filter
 	    public void doFilter(ServletRequest servletRequest,
                 ServletResponse servletResponse,
                 FilterChain filterChain) throws IOException, ServletException
-            {	
-				HttpServletRequest request = (HttpServletRequest) servletRequest;
-				HttpServletResponse response = (HttpServletResponse) servletResponse;
-				
-				if (request.getSession().getAttribute("user") != null) {
-				   filterChain.doFilter(request, response);
-				}
-				else if ( isPublicResource(request) ) {
-				   filterChain.doFilter(request, response);
-				}
-				else {
-				   response.sendRedirect(request.getContextPath() + loginView);
-				}
+        {	
+	    	
+	    	/* TODO:
+	    	 * 1) Check if this is the login page, if user already logged in, forward to "portal page"
+	    	 */
+			HttpServletRequest request = (HttpServletRequest) servletRequest;
+			HttpServletResponse response = (HttpServletResponse) servletResponse;
+			
+			if (request.getSession().getAttribute("user") != null) {
+			   filterChain.doFilter(request, response);
 			}
+			else if ( isPublicResource(request) ) {
+			   filterChain.doFilter(request, response);
+			}
+			else {
+			   response.sendRedirect(request.getContextPath() + loginView);
+			}
+		}
 			
 		/**
 		* Method that checks the request to see if it is for a publicly accessible resource
 		*/
-		protected boolean isPublicResource(HttpServletRequest request) {
-		String resource = request.getServletPath();
-		
-		return publicUrls.contains(request.getServletPath())
-		       || (!resource.endsWith(".jsp") && !resource.endsWith(".action"));
+		protected boolean isPublicResource(HttpServletRequest request) 
+		{
+			String resource = request.getServletPath();
+			
+			return publicUrls.contains(request.getServletPath())
+			       || (!resource.endsWith(".jsp") && !resource.endsWith(".action"));
 		}
 		
 		/** Does nothing. */

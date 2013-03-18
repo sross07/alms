@@ -23,8 +23,14 @@
     <init-param>
       <param-name>ActionResolver.Packages</param-name>
       <param-value>org.web.action</param-value>
+    </init-param>    
+
+    <init-param>
+        <param-name>ActionBeanContext.Class</param-name>
+        <param-value>org.web.action.ALMSActionBeanContext</param-value>
     </init-param>
   </filter>
+  
   
 <!-- 3.The dispatcher servlet declaration -->
   <servlet>

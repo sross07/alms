@@ -5,15 +5,15 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 
 public class ALMSActionBean implements ActionBean
 {
-	private ActionBeanContext context;
+	private ALMSActionBeanContext context;
 
-	@Override
-	public ActionBeanContext getContext() {
+	public ALMSActionBeanContext getContext() {
 		return this.context;
 	}
-
-	@Override
+	
 	public void setContext(ActionBeanContext context) {
-		this.context = (ActionBeanContext) context;		
+		this.context = (ALMSActionBeanContext) context;		
 	}
+
+
 }
