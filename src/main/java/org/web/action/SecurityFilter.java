@@ -8,7 +8,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.sourceforge.stripes.util.StringUtil;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +25,7 @@ public class SecurityFilter implements Filter
 			publicUrls.add("/UserLogin.action");
 			publicUrls.add("/Register.action");
 			publicUrls.add("/ForgotPassword.action");
-			}
+		}
     
 	    /** Does nothing. */
 	    public void init(FilterConfig filterConfig) throws ServletException { }	    
@@ -35,11 +34,7 @@ public class SecurityFilter implements Filter
                 ServletResponse servletResponse,
                 FilterChain filterChain) throws IOException, ServletException
         {	
-	    	
-	    	/* TODO:
-	    	 * 1) Check if this is the login page, if user already logged in, forward to "portal page"
-	    	 */
-			HttpServletRequest request = (HttpServletRequest) servletRequest;
+	    	HttpServletRequest request = (HttpServletRequest) servletRequest;
 			HttpServletResponse response = (HttpServletResponse) servletResponse;
 			
 			if (request.getSession().getAttribute("user") != null) {

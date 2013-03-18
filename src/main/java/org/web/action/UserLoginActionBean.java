@@ -6,7 +6,6 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.DefaultHandler;
 
 import org.alms.core.*;
-import org.alms.beans.*;
 import org.alms.DataAccess.*;
 
 public class UserLoginActionBean extends ALMSActionBean
