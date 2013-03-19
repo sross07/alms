@@ -8,8 +8,6 @@
 		    <stripes:text name="email"/>	
 		    <stripes:submit name="submit" value="Retreive Password"/>
 		</stripes:form>
-		<br/>
-		<br/>	
 	
 	</stripes:layout-component>
 </stripes:layout-render>

@@ -7,8 +7,8 @@ import net.sourceforge.stripes.action.DefaultHandler;
 public class RegisterActionBean extends ALMSActionBean 
 {	
 	@DefaultHandler
-	public Resolution defaultHandler()
-	{
+	public Resolution registrationDefault()
+	{	
 		return new ForwardResolution("/register.jsp");  
 	}
 }

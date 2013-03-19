@@ -1,32 +1,29 @@
 <%@ include file="/taglibs.jsp" %>
 <stripes:layout-render name="/Layouts/standard.jsp" title="Login">
 
-	<stripes:layout-component name="html-head">
+	<stripes:layout-component name="htmlHead">
 		<link href="css/smart_wizard.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="scripts/jquery-1.4.2.min.js"></script>	
 		<script type="text/javascript" src="scripts/jquery.smartWizard-2.0.min.js"></script>
 		
 		<script type="text/javascript">
-		    $(document).ready(function(){
-		
-		    	// Smart Wizard     	
-		
+		    $(document).ready(function(){		
+		    	// Smart Wizard  
 		  		$('#wizard').smartWizard({transitionEffect:'slideleft',
-		  			onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true});	
-		
+		  			onLeaveStep:leaveAStepCallback,onFinish:onFinishCallback,enableFinishButton:true});			
 		
 		      function leaveAStepCallback(obj)
 		      {		
-		        var step_num= obj.attr('rel');		
-		        return validateSteps(step_num);		
+			        var step_num= obj.attr('rel');		
+			        return validateSteps(step_num);		
 		      }	
 		      
 		      function onFinishCallback()
 		      {		
-		       if(validateAllSteps())
-		       {	    	  
-		        $('form').submit();		
-		       }		
+			       if(validateAllSteps())
+			       {	    	  
+			        	$('form').submit();	
+			       }		
 		      }
 		
 			});	
@@ -136,25 +133,26 @@
 		       }		
 		       return isValid;		
 		    }
-		    function validateStep3(){
+		    
+			function validateStep3(){
 		
-		      var isValid = true;
-		      //validate email  email		
-		      var email = $('#email').val();		
-		       if(email && email.length > 0){		
-		         if(!isValidEmailAddress(email)){		
-		           isValid = false;		
-		           $('#msg_email').html('Email is invalid').show();          
-		
-		         }else{		
-		          $('#msg_email').html('').hide();		
-		         }		
-		       }else{		
-		         isValid = false;		
-		         $('#msg_email').html('Please enter email').show();		
-		       }       
-		
-		      return isValid;
+			    //  var isValid = true;		      
+			    //  var email = $('#email').val();		
+			    //   if(email && email.length > 0){		
+			    //    if(!isValidEmailAddress(email)){		
+			    //       isValid = false;		
+			    //       $('#msg_email').html('Email is invalid').show();          
+			
+			//         }else{		
+			  //        $('#msg_email').html('').hide();		
+			    //     }		
+			      // }else{		
+			        // isValid = false;		
+			         // $('#msg_email').html('Please enter email').show();		
+			       //}       
+			
+			      //return isValid;
+			      return true;
 		
 		    }		
 		    // Email Validation		
@@ -168,7 +166,7 @@
 
 
 	<stripes:layout-component name="contents">
-		<stripes:form action="/UserLogin.action" focus="" >	
+		<stripes:form action="/CompletedRegistration.action"  >			
 		  <input type='hidden' name="issubmit" value="1">	
 		<!-- Tabs -->	
 		  		<div id="wizard" class="swMain">	
@@ -183,24 +181,17 @@
 		  				<li><a href="#step-2">	
 		                <label class="stepNumber">2</label>	
 		                <span class="stepDesc">	
-		                   Profile Details<br />	
-		                   <small>Fill your profile details</small>	
+		                   Institution<br />	
+		                   <small>Fill your institution details</small>	
 		                </span>	
 		            </a></li>	
 		  				<li><a href="#step-3">	
 		                <label class="stepNumber">3</label>	
 		                <span class="stepDesc">	
-		                   Contact Details<br />	
-		                   <small>Fill your contact details</small>	
+		                   Configuration<br />	
+		                   <small>Messaging configuration.</small>	
 		                </span>	
 		             </a></li>	
-		  				<li><a href="#step-4">	
-		                <label class="stepNumber">3</label>	
-		                <span class="stepDesc">	
-		                   Other Details<br />	
-		                   <small>Fill your other details</small>	
-		                </span>	
-		            </a></li>	
 		  			</ul>	
 		  			<div id="step-1">		
 		            <h2 class="StepTitle">Step 1: Account Details</h2>	
@@ -211,111 +202,72 @@
 		          			<tr>	
 		                    	<td align="right">Username :</td>	
 		                    	<td align="left">	
-		                    	  <input type="text" id="username" name="username" value="" class="txtBox">	
-		                      </td>	
+		                    		<stripes:text id="username" name="username" value="" class="txtBox" />
+		                      	</td>	
 		                    	<td align="left"><span id="msg_username"></span>&nbsp;</td>	
 		          			</tr>	
 		          			<tr>	
 		                    	<td align="right">Password :</td>	
 		                    	<td align="left">	
-		                    	  <input type="password" id="password" name="password" value="" class="txtBox">	
-		                      </td>	
+		                    		<stripes:password id="password" name="password" value="" class="txtBox"/>		                    	  
+		                      	</td>	
 		                    	<td align="left"><span id="msg_password"></span>&nbsp;</td>	
 		          			</tr> 	
 		                	<tr>	
 		                    	<td align="right">Confirm Password :</td>	
 		                    	<td align="left">	
-		                    	  <input type="password" id="cpassword" name="cpassword" value="" class="txtBox">	
-		                      </td>	
+		                    		<stripes:password id="cpassword" name="cpassword" value="" class="txtBox"/>		                    	  
+		                      	</td>	
 		                    	<td align="left"><span id="msg_cpassword"></span>&nbsp;</td>	
 		          			</tr>  
 		  			   </table>  
 		        </div>
 		  			<div id="step-2">	
-		            <h2 class="StepTitle">Step 2: Profile Details</h2>		
-		            <table cellspacing="3" cellpadding="3" align="center">	
-		          			<tr>	
-		                    	<td align="center" colspan="3">&nbsp;</td>	
-		          			</tr>        	
-		          			<tr>	
-		                    	<td align="right">First Name :</td>	
-		                    	<td align="left">	
-		                    	  <input type="text" id="firstname" name="firstname" value="" class="txtBox">	
-		                      </td>	
-		                    	<td align="left"><span id="msg_firstname"></span>&nbsp;</td>	
-		          			</tr>	
-		          			<tr>	
-		                    	<td align="right">Last Name :</td>	
-		                    	<td align="left">	
-		                    	  <input type="text" id="lastname" name="lastname" value="" class="txtBox">	
-		                      </td>	
-		                    	<td align="left"><span id="msg_lastname"></span>&nbsp;</td>	
-		          			</tr> 	
-		          			<tr>	
-		                    	<td align="right">Gender :</td>	
-		                    	<td align="left">	
-		                        <select id="gender" name="gender" class="txtBox">	
-		                          <option value="">-select-</option>	
-		                          <option value="Female">Female</option>	
-		                          <option value="Male">Male</option>   
-		                        </select>	
-		                      </td>	
-		                    	<td align="left"><span id="msg_gender"></span>&nbsp;</td>	
-		          			</tr>
-		  			   </table>  
+			            <h2 class="StepTitle">Step 2: Institution Details</h2>		
+			            <table cellspacing="3" cellpadding="3" align="center">	
+			          			<tr>	
+			                    	<td align="center" colspan="3">&nbsp;</td>	
+			          			</tr>        	
+			          			<tr>	
+			                    	<td align="right">Institution Name :</td>	
+			                    	<td align="left">				                    	  
+			                    	  <stripes:text id="InstitutionName" name="InstitutionName" value="" class="txtBox"/>
+			                      	</td>	
+			                    	<td align="left"><span id="msg_InstitutionName"></span>&nbsp;</td>	
+			          			</tr>	
+			          			<tr>	
+			                    	<td align="right">Contact Email:</td>	
+			                    	<td align="left">	
+			                    	  <stripes:text id="contactEmail" name="contactEmail" value="" class="txtBox"/>			                    	  
+			                      	</td>	
+			                    	<td align="left"><span id="msg_contactEmail"></span>&nbsp;</td>	
+			          			</tr>
+			          			<tr>	
+			                    	<td align="right">Application OID:</td>	
+			                    	<td align="left">	
+			                    	  <stripes:text id="oid" name="oid" value="" class="txtBox"/>			                    	  
+			                      	</td>	
+			                    	<td align="left"><span id="msg_oid"></span>&nbsp;</td>	
+			          			</tr>
+			  			   </table>  
 		        	</div>     
 		  			<div id="step-3">	
-		            <h2 class="StepTitle">Step 3: Contact Details</h2>		
-		            <table cellspacing="3" cellpadding="3" align="center">	
+		            <h2 class="StepTitle">Step 3: Messaging Configuration</h2>		
+		            	<table cellspacing="3" cellpadding="3" align="center">	
 		          			<tr>	
-		                    	<td align="center" colspan="3">&nbsp;</td>	
-		          			</tr>        	
-		          			<tr>	
-		                    	<td align="right">Email :</td>	
-		                    	<td align="left">	
-		                    	  <input type="text" id="email" name="email" value="" class="txtBox">	
-		                      </td>	
-		                    	<td align="left"><span id="msg_email"></span>&nbsp;</td>	
-		          			</tr>
-			          			<tr>	
-		                    	<td align="right">Phone :</td>
-			                    	<td align="left">		
-		                    	  <input type="text" id="phone" name="phone" value="" class="txtBox">		
-		                      </td>		
-		                    	<td align="left"><span id="msg_phone"></span>&nbsp;</td>		
-		          			</tr>
-							<tr>		
-		                    	<td align="right">Address :</td>		
-		                    	<td align="left">		
-		                            <textarea name="address" id="address" class="txtBox" rows="3"></textarea>		
-		                      </td>		
-		                    	<td align="left"><span id="msg_address"></span>&nbsp;</td>		
-		          			</tr>
-		  			   </table>  
-		        	</div>		
-		  			<div id="step-4">		
-		            <h2 class="StepTitle">Step 4: Other Details</h2>		
-		            <table cellspacing="3" cellpadding="3" align="center">		
-		          			<tr>		
-		                    	<td align="center" colspan="3">&nbsp;</td>		
-		          			</tr>        		
-		          			<tr>		
-		                    	<td align="right">Hobbies :</td>		
-		                    	<td align="left">		
-		                    	  <input type="text" id="phone" name="phone" value="" class="txtBox">		
-		                      </td>		
-		                    	<td align="left"><span id="msg_phone"></span>&nbsp;</td>		
-		          			</tr>        			
-		          			<tr>		
-		                    	<td align="right">About You :</td>		
-		                    	<td align="left">		
-		                            <textarea name="address" id="address" class="txtBox" rows="5"></textarea>		
-		                      </td>		
-		                    	<td align="left"><span id="msg_address"></span>&nbsp;</td>		
-		          			</tr>
-		  			   </table> 
-	        		</div>		
-	  			</div>		
+		                    	<td align="center" colspan="3">&nbsp;</td>		                    	
+		          			</tr>  
+     						<tr>	
+		                    	<td align="right">Messaging Connection:</td>	
+		                    	<td align="left">				                    	  
+		                    	  	<stripes:radio name="ConnectionOption" value="Push" />Push
+									<stripes:radio name="ConnectionOption" value="Pull" />Pull
+		                      	</td>		                    		
+		          			</tr>	 
+		            	</table>		            	
+		        	</div>		  			
+	  			</div> 			
+	  			
 		<!-- End SmartWizard Content -->  
 		</stripes:form>		
 	</stripes:layout-component>

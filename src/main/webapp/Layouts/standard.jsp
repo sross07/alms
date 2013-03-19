@@ -7,7 +7,7 @@
             <title>State Animal Laboratory Messaging Service</title>
             <link rel="stylesheet" type="text/css" media="all" href="css/salms.css"  />
             
-            <stripes:layout-component name="html-head"/>
+            <stripes:layout-component name="htmlHead"/>
         </head>
         <body>
             <div id="content">
@@ -15,10 +15,11 @@
                    	<jsp:include page="header.jsp"/>
                 </stripes:layout-component>
 
-                <div >
+                <div>
                     <stripes:messages/>
                     <stripes:layout-component name="contents"/>
                 </div>
+
 
                 <div id="footer">
 

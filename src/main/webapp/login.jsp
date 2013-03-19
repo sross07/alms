@@ -7,8 +7,7 @@
 				
 				<div class="form-pair">
 					<div class="form-item">
-						<stripes:label for="username">Username: </stripes:label>	
-						
+						<stripes:label for="username">Username: </stripes:label>						
 					</div>
 					<div class="form-value">							
 						<stripes:text name="username" size="30"/>												
@@ -35,7 +34,7 @@
 			</fieldset>
 			<br />
 			<p>
-				<stripes:link href="Register.action">Register</stripes:link> | 
+				<stripes:link href="/register.jsp">Register</stripes:link> | 
 				<stripes:link href="ForgotPassword.action">Forgot Password</stripes:link>
 			</p>
          </stripes:form>

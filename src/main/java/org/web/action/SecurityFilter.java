@@ -22,9 +22,11 @@ public class SecurityFilter implements Filter
 			publicUrls.add("/register.jsp");
 			publicUrls.add("/forgotpassword.jsp");
 			publicUrls.add("/index.jsp");
+			publicUrls.add("/CompletedRegistration.jsp");
 			publicUrls.add("/UserLogin.action");
 			publicUrls.add("/Register.action");
 			publicUrls.add("/ForgotPassword.action");
+			publicUrls.add("/CompletedRegistration.action");
 		}
     
 	    /** Does nothing. */
