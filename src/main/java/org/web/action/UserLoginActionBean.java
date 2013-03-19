@@ -4,6 +4,8 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.DefaultHandler;
+import net.sourceforge.stripes.validation.LocalizableError;
+import net.sourceforge.stripes.validation.ValidationError;
 
 import org.alms.core.*;
 import org.alms.DataAccess.*;
@@ -48,8 +50,10 @@ public class UserLoginActionBean extends ALMSActionBean
 				return new ForwardResolution(PortalPage);  
 			}
 			else
-			{				
-				return new RedirectResolution(loginView);				
+			{		
+				ValidationError error = new LocalizableError("NoLogin");
+	            getContext().getValidationErrors().add("NoLogin", error);
+	            return getContext().getSourcePageResolution();							
 			}			
 			
 		} catch (Exception e) {

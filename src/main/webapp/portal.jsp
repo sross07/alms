@@ -7,6 +7,9 @@
 		Manual Send Message <br />
 		Review Sent Messages <br />
 		Account Configuration <br />
+		<br />
+		
+		<stripes:link href="Logout.action">Logout</stripes:link> 
 	
 	
 	</stripes:layout-component>
