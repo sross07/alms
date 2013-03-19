@@ -35,8 +35,7 @@
 		       if(validateStep1() == false)
 		       {		
 		         isStepValid = false;		
-		         $('#wizard').smartWizard('setError',{stepnum:1,iserror:true});         
-		
+		         $('#wizard').smartWizard('setError',{stepnum:1,iserror:true});
 		       }
 		       else
 		       {		
@@ -45,10 +44,8 @@
 		
 		       if(validateStep3() == false)
 		       {	
-		         isStepValid = false;
-		         
-		         $('#wizard').smartWizard('setError',{stepnum:3,iserror:true});        
-		
+		         isStepValid = false;		         
+		         $('#wizard').smartWizard('setError',{stepnum:3,iserror:true});   
 		       }
 		       else
 		       {		
@@ -141,18 +138,17 @@
 			    //   if(email && email.length > 0){		
 			    //    if(!isValidEmailAddress(email)){		
 			    //       isValid = false;		
-			    //       $('#msg_email').html('Email is invalid').show();          
-			
-			//         }else{		
-			  //        $('#msg_email').html('').hide();		
+			    //       $('#msg_email').html('Email is invalid').show();       
+				//         }else{		
+			  	//        $('#msg_email').html('').hide();		
 			    //     }		
-			      // }else{		
-			        // isValid = false;		
-			         // $('#msg_email').html('Please enter email').show();		
-			       //}       
+			    // }else{		
+			    // isValid = false;		
+			    // $('#msg_email').html('Please enter email').show();		
+			    //}       
 			
-			      //return isValid;
-			      return true;
+			    //return isValid;
+		      	return true;
 		
 		    }		
 		    // Email Validation		
@@ -175,14 +171,14 @@
 		                <label class="stepNumber">1</label>	
 		                <span class="stepDesc">	
 		                   Account Details<br />	
-		                   <small>Fill your account details</small>	
+		                   <small>Fill your account details.</small>	
 		                </span>	
 		            </a></li>	
 		  				<li><a href="#step-2">	
 		                <label class="stepNumber">2</label>	
 		                <span class="stepDesc">	
 		                   Institution<br />	
-		                   <small>Fill your institution details</small>	
+		                   <small>Fill your institution details.</small>	
 		                </span>	
 		            </a></li>	
 		  				<li><a href="#step-3">	
@@ -264,7 +260,7 @@
 									<stripes:radio name="ConnectionOption" value="Pull" />Pull
 		                      	</td>		                    		
 		          			</tr>	 
-		            	</table>		            	
+		            	</table>      	            	
 		        	</div>		  			
 	  			</div> 			
 	  			
