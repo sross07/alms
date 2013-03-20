@@ -2,7 +2,7 @@
 
 <stripes:layout-render name="/Layouts/standard.jsp" title="Login">
 	<stripes:layout-component name="contents">
-		<stripes:form action="/UserLogin.action" focus="">
+		<stripes:form action="/UserLogin.action" focus="username">
 			<fieldset class="form-submit">
 				
 				<div class="form-pair">
