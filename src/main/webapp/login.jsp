@@ -34,7 +34,7 @@
 			</fieldset>
 			<br />
 			<p>
-				<stripes:link href="/register.jsp">Register</stripes:link> | 
+				<stripes:link href="Register.action">Register</stripes:link> | 
 				<stripes:link href="ForgotPassword.action">Forgot Password</stripes:link>
 			</p>
          </stripes:form>
