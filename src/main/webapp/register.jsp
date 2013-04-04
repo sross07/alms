@@ -29,7 +29,8 @@
 			});	
 		    
 		    function validateAllSteps()
-		    {		
+		    { 	 
+		      
 		       var isStepValid = true;
 		       
 		       if(validateStep1() == false)
@@ -86,8 +87,10 @@
 		      return isStepValid;		
 		    }
 		
-			function validateStep1(){
-		
+			function validateStep1()
+			{			
+				 MsgConnectionConfig();
+			  
 		       var isValid = true; 		
 		       // Validate Username		
 		       var un = $('#username').val();		
@@ -156,7 +159,34 @@
 		    {		
 		      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);		
 		      return pattern.test(emailAddress);		
-		    } 		
+		    } 	
+		    
+		    //Handle the radio button 
+		    function MsgConnectionConfig()
+		    {   	
+		    	var selValue = $('input[name=ConnectionOption]:checked').val();	
+	    	
+		    	if (typeof selValue == 'undefined')
+	    		{		    				    		
+		    		$("#PullSelected").hide();
+		    		$("#PushSelected").hide();
+		    		
+		    		alert("hi "+ selValue);
+	    		}
+		    	else
+		    	{
+			    	if (selValue=="Push")
+			    	{
+		    		   $("#PullSelected").hide(100);
+		    		   $("#PushSelected").show(100);	    		   
+			    	}	    		
+			    	else if (selValue=="Pull")
+		    		{
+		    		   $("#PushSelected").hide(100);
+		    		   $("#PullSelected").show(100);			    		
+			    	}	
+		    	}
+		    }
 		</script>
 	</stripes:layout-component>
 
@@ -256,10 +286,17 @@
      						<tr>	
 		                    	<td align="right">Messaging Connection:</td>	
 		                    	<td align="left">				                    	  
-		                    	  	<stripes:radio name="ConnectionOption" value="Push" />Push
-									<stripes:radio name="ConnectionOption" value="Pull" />Pull
+		                    	  	<stripes:radio name="ConnectionOption" value="Push" onchange="MsgConnectionConfig();" />Push
+									<stripes:radio name="ConnectionOption" value="Pull" onchange="MsgConnectionConfig();" />Pull
 		                      	</td>		                    		
-		          			</tr>	 
+		          			</tr>	
+		          			 <tr>
+				                <td> <div id="lblHeader">More Options: </div> </td>
+				                <td> 
+				                	<div id="PushSelected">Push Is Selected</div> 
+				                	<div id="PullSelected">Pull Is Selected</div>				                	
+			                	</td>
+				            </tr> 
 		            	</table>      	            	
 		        	</div>		  			
 	  			</div> 			
