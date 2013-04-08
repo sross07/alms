@@ -10,7 +10,72 @@
       Scott Ross - initial API and implementation
 -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>test</display-name>
+  <display-name>SALMS</display-name>
+<!-- 1. The Stripes filter declaration. -->
+ 
+  <filter>
+    <filter-name>StripesFilter</filter-name>
+    <filter-class>
+      net.sourceforge.stripes.controller.StripesFilter
+    </filter-class>
+
+<!-- 2.A parameter to the Stripes filter -->
+    <init-param>
+      <param-name>ActionResolver.Packages</param-name>
+      <param-value>org.web.action</param-value>
+    </init-param>    
+
+    <init-param>
+        <param-name>ActionBeanContext.Class</param-name>
+        <param-value>org.web.action.ALMSActionBeanContext</param-value>
+    </init-param>
+  </filter>
+  
+  
+<!-- 3.The dispatcher servlet declaration -->
+  <servlet>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <servlet-class>
+      net.sourceforge.stripes.controller.DispatcherServlet
+    </servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+<!-- 4.A mapping to make the Stripes filter intercept all requests that go  through the dispatcher servlet -->
+  <filter-mapping>
+    <filter-name>StripesFilter</filter-name>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+
+<!-- 5. A mapping that makes the dispatcher servlet handle *.action requests -->
+  <servlet-mapping>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  
+<!-- 6.index.jsp as a default file -->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!--         Configuration of security filter.                  		 -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <filter>
+        <description>Provides login security for Bugzooky</description>
+        <filter-name>SALMS</filter-name>
+        <filter-class>org.web.action.SecurityFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SALMS</filter-name>
+        <url-pattern>*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+  
+ <!-- 7.Jersey examples -->
   <servlet>
     <servlet-name>Jersey REST Service</servlet-name>
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
@@ -23,9 +88,11 @@
           <param-value>org.alms.services</param-value>
      </init-param>
     <load-on-startup>1</load-on-startup>
-  </servlet>
+  </servlet>  
+  
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/services/*</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
+  
 </web-app>

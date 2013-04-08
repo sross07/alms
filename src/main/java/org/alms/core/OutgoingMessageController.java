@@ -29,9 +29,9 @@ public class OutgoingMessageController
 			MessageInfoManager messageManager = new MessageInfoManager();
 			messageManager.SaveResultMessage(msg);
 		} 
-		catch (Exception e) 
+		catch (Exception ex) 
 		{
-			throw e; 
+			throw ex; 
 		}	
 		
 	}

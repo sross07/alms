@@ -29,15 +29,12 @@ public class VocabularyValidator extends MessageDecorator
 	{
 		if (super.validate())
 		{
-			if (flag)
-			{
-				return flag;
-			}
-			else
+			if (!flag)
 			{
 				this.errorMessage="Coded term (vocubulary) issue in this message";
-				return flag;
-			}
+			}	
+			
+			return flag;
 			
 		}
 		else
