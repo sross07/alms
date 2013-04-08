@@ -38,7 +38,7 @@ Send Message
 Header Details
 *username
 *password
-*ScheameValidation
+*SchemaValidation
 
 Available HTTP Methods
 *Http Put through Application XML

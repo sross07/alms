@@ -2,10 +2,9 @@ body {
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-size: 63.125%; /* translate 1.0em to 10px, 1.5em to 15px, etc. */
  	}
-
 #content {
 	margin:0 auto;
-	width: 740px;
+	width: 980px;
 	text-align: left;
 	}
 
@@ -58,6 +57,7 @@ form {
 
 .form-submit {
 	border: 1px solid #dbdbd2;
+	margin: 8px;
 	}
 
 fieldset {

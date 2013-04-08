@@ -33,8 +33,7 @@ public class SchemaValidator extends MessageDecorator  {
 	}
 
 	@Override
-	public boolean validate() {
-		// TODO Auto-generated method stub	
+	public boolean validate() {		
 		
 		if (super.validate())
 		{
