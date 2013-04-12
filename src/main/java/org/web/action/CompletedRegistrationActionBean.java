@@ -3,6 +3,8 @@ package org.web.action;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
+import org.alms.beans.*;
+import org.alms.core.*;
 
 public class CompletedRegistrationActionBean extends ALMSActionBean 
 {
@@ -91,7 +93,24 @@ public class CompletedRegistrationActionBean extends ALMSActionBean
     
 	@DefaultHandler
 	public Resolution defaultHandler()
-	{
+	{		
+		UserAccount account = new UserAccount();		
+		UserController manager = new UserController();
+		
+		// Do Checks
+		
+		//
+		
+		account.setUserName(this.getUsername());
+		account.setPassword(this.getPassword());
+		account.setInstitutionName(this.getInstitutionName());
+		account.setContactName(this.getContactEmail());
+		account.setAccountOID(this.getOid());
+		account.setProtocol(this.getConnectionOption());
+		account.setURL(this.getPushUrl());	
+		account.setHttpVerb(this.getPushHttpVerb());
+		
+		//
 		System.out.println("Username: " + this.getUsername());
 		System.out.println("Password: " + this.getPassword());
 		System.out.println("InstitutionName: " + this.getInstitutionName());
@@ -101,6 +120,9 @@ public class CompletedRegistrationActionBean extends ALMSActionBean
 		System.out.println("pushUrl: " + this.getPushUrl());
 		System.out.println("PushHeaderVarible: " + this.getPushHeaderVarible());
 		System.out.println("PushHttpVerb: " + this.getPushHttpVerb());		
+		///
+		
+		manager.signup(account);
 		return new ForwardResolution("/CompletedRegistration.jsp");  
 	}	
 }
