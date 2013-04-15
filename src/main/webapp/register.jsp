@@ -277,8 +277,8 @@
 				                		URL to Push To: <stripes:text id="pushUrl" name="pushUrl" value="" class="txtBox"/> <br />
 										Header Variables: <stripes:text id="pushHeaderVarible" name="pushHeaderVarible" value="" class="txtBox"/> <br />
 	                					HTTP Verb:  
-	                					<stripes:radio id="pushHttpVerb" name="pushHttpVerb" value="Post"/>Post
-										<stripes:radio id="pushHttpVerb" name="pushHttpVerb" value="Put"/>Put 
+	                					<stripes:radio id="pushHttpVerb" name="pushHttpVerb" value="POST"/>Post
+										<stripes:radio id="pushHttpVerb" name="pushHttpVerb" value="PUT"/>Put 
 										<br />			                		
 				                	</div> 
 				                	

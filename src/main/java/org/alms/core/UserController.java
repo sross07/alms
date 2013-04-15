@@ -11,8 +11,6 @@
 //DS is it
 
 package org.alms.core;
-
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import org.alms.DataAccess.UserManager;
@@ -54,14 +52,8 @@ public class UserController
 		{
 			UserManager userManager = new UserManager();
 			String saltedPassword = SALT + userAccount.getPassword();
-			String hashedPassword = generateHash(saltedPassword);
-
-			UserAccount CornellAccount = new UserAccount();
-			CornellAccount.setUserName(userAccount.getUserName());
-			CornellAccount.setPassword(hashedPassword);
-			CornellAccount.setAccountOID(userAccount.getAccountOID());
-
-			userManager.AddUser(CornellAccount);
+			userAccount.setPassword(generateHash(saltedPassword));		
+			userManager.AddUser(userAccount);
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block

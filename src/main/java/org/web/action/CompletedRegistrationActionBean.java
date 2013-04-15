@@ -97,20 +97,22 @@ public class CompletedRegistrationActionBean extends ALMSActionBean
 		UserAccount account = new UserAccount();		
 		UserController manager = new UserController();
 		
-		// Do Checks
-		
-		//
-		
+		// To DO:
+		// 1.  Need to set prototcol (HTTPS or HTTP)
+		// 2.  Need to do checks on account
+		// 3. 
+			
 		account.setUserName(this.getUsername());
 		account.setPassword(this.getPassword());
 		account.setInstitutionName(this.getInstitutionName());
 		account.setContactName(this.getContactEmail());
 		account.setAccountOID(this.getOid());
-		account.setProtocol(this.getConnectionOption());
+		//account.setProtocol(this.getConnectionOption());		
+		account.setDestinationType(this.getConnectionOption());
 		account.setURL(this.getPushUrl());	
 		account.setHttpVerb(this.getPushHttpVerb());
 		
-		//
+		//		
 		System.out.println("Username: " + this.getUsername());
 		System.out.println("Password: " + this.getPassword());
 		System.out.println("InstitutionName: " + this.getInstitutionName());
