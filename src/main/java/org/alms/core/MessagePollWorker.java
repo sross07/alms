@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.alms.core;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,7 +34,8 @@ public class MessagePollWorker
 	public String DoWork() throws Exception
 	{				
 		try 
-		{
+		{		
+			
 			PollManager pollMsgManager= new PollManager();
 			
 			MessageInfoManager messageController;
@@ -58,6 +60,7 @@ public class MessagePollWorker
 			}
 			
 			msg.setMessageIdList(MsgIdList);		
+			msg.setMsgDate(new Date());
 			pollMsgManager.Save(msg);	
 						
 			return xmlResponse;

@@ -36,15 +36,7 @@ public class AckGenerator
 		this.errorMessage=errorMessage;
 		this.uuid= UUID.randomUUID().getMostSignificantBits();
 		this.hl7DateFormat= new java.text.SimpleDateFormat("yyyyMMddHHmmssZ");
-		
-		if(response)
-		{
-			this.responseCode=errorCode;
-		}
-		else
-		{
-			this.responseCode=errorCode;
-		}
+		this.responseCode=errorCode;
 	}	
 	
 	public String HeaderIssue() throws HL7Exception 
