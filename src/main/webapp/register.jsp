@@ -156,12 +156,12 @@
 	    		}
 		    	else
 		    	{
-			    	if (selValue=="Push")
+			    	if (selValue=="PUSH")
 			    	{
 		    		   $("#PullSelected").hide(100);
 		    		   $("#PushSelected").show(100);	    		   
 			    	}	    		
-			    	else if (selValue=="Pull")
+			    	else if (selValue=="POLL")
 		    		{
 		    		   $("#PushSelected").hide(100);
 		    		   $("#PullSelected").show(100);			    		
@@ -266,8 +266,8 @@
      						<tr>	
 		                    	<td align="right">Messaging Connection:</td>	
 		                    	<td align="left">				                    	  
-		                    	  	<stripes:radio id="connectionOption" name="connectionOption" value="Push" onchange="MsgConnectionConfig();" />Push
-									<stripes:radio id="connectionOption" name="connectionOption" value="Pull" onchange="MsgConnectionConfig();" />Pull
+		                    	  	<stripes:radio id="connectionOption" name="connectionOption" value="PUSH" onchange="MsgConnectionConfig();" />PUSH
+									<stripes:radio id="connectionOption" name="connectionOption" value="POLL" onchange="MsgConnectionConfig();" />POLL
 		                      	</td>		                    		
 		          			</tr>	
 		          			 <tr>

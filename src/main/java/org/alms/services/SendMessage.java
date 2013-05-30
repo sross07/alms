@@ -49,14 +49,17 @@ public class SendMessage
 		{			
 			AckGenerator AckMessage = 
 					new AckGenerator(false,this.headerError, "AE");
-					
+				
 			return AckMessage.HeaderIssue();
 		}	
 		
 		IMsg messageData = doWorkForMessageType(headers, incomingMessage);
 		
-		if (messageData.receiverTransmissionType() == "POLL")
+		
+		
+		if (messageData.receiverTransmissionType().equals("POLL"))
 		{
+			System.out.println(messageData.receiverTransmissionType());
 			
 			IValidator msgValidator = new SimpleValidator();		
 			msgValidator = new SecurityValidator(msgValidator, messageData);	
