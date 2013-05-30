@@ -36,10 +36,7 @@ public class TestHarness
 				+ " " + map.get("password")+ " " 
 				+ map.get("SchemaValidation") + " " 
 				+ content;
-		
-
 	}
-
 	
 	@GET
 	public String TestHarnessWorker()

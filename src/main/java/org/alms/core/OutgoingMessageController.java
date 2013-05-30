@@ -12,6 +12,7 @@ package org.alms.core;
 import org.alms.messages.*;
 import org.alms.DataAccess.*;
 import org.alms.beans.*;
+import java.util.Date;
 
 public class OutgoingMessageController
 {	
@@ -22,7 +23,8 @@ public class OutgoingMessageController
 		msg.setIncomingMessage(messageData.getIncomingMessage());
 		msg.setOutgoingMessage(responseMsg);
 		msg.setDestinationOid(messageData.getMsgDestination().getNamespaceID());
-		msg.setIncomingMessageId(messageData.getMsgId());
+		msg.setIncomingMessageId(messageData.getMsgId());		
+		msg.setMsgDate(new Date());
 		
 		try 
 		{

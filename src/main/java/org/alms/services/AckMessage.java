@@ -22,6 +22,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
+
 import org.alms.DataAccess.*;
 import org.alms.beans.*;
 
@@ -30,7 +32,7 @@ import org.alms.beans.*;
 public class AckMessage 
 {
 	@GET
-	@Produces("text/html")	
+	@Produces(MediaType.APPLICATION_XML)	
 	public String AckMessageHandler(@PathParam("uid") String MsgId, @Context HttpHeaders headers) throws Exception
 	{	
 		

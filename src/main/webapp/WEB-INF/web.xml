@@ -29,8 +29,7 @@
         <param-name>ActionBeanContext.Class</param-name>
         <param-value>org.web.action.ALMSActionBeanContext</param-value>
     </init-param>
-  </filter>
-  
+  </filter> 
   
 <!-- 3.The dispatcher servlet declaration -->
   <servlet>
@@ -63,8 +62,9 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!--         Configuration of security filter.                  		 -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
     <filter>
-        <description>Provides login security for Bugzooky</description>
+        <description>Provides login security for SALMS</description>
         <filter-name>SALMS</filter-name>
         <filter-class>org.web.action.SecurityFilter</filter-class>
     </filter>
@@ -85,7 +85,7 @@
      </init-param>
      <init-param>
           <param-name>com.sun.jersey.config.property.packages</param-name>
-          <param-value>org.alms.services</param-value>
+          <param-value>org.alms.services;com.wordnik.swagger.jaxrs.listing</param-value>           
      </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>  

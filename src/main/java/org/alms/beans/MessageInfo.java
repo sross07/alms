@@ -13,6 +13,7 @@ package org.alms.beans;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import org.bson.types.ObjectId;
+import java.util.Date;
 
 @Entity
 public class MessageInfo 
@@ -23,7 +24,16 @@ public class MessageInfo
 	private String destinationOid;
 	private String incomingMessage;
 	private String outgoingMessage;
+	private Date MsgDate;	
 	
+	public Date getMsgDate() {
+		return MsgDate;
+	}
+
+	public void setMsgDate(Date msgDate) {
+		MsgDate = msgDate;
+	}
+
 	public UserAccount getUser() {
 		return user;
 	}

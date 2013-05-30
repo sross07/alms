@@ -18,7 +18,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
-
 import org.alms.core.AckGenerator;
 import org.alms.validators.IValidator;
 import org.alms.validators.ReceiverValidator;
@@ -37,9 +36,9 @@ public class SendMessage
 	
 	private String headerError="";
 	
-	@PUT
+	@PUT	
 	@Consumes(MediaType.APPLICATION_XML)
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_XML)	
 	public String SendMessageWorker(String incomingMessage, @Context HttpHeaders headers)
 			throws Exception 
 	{	
@@ -127,8 +126,7 @@ public class SendMessage
 	}
 	
 	private boolean SchemaExist(String schemaName)
-	{
-		
+	{		
 		// Make sure schema Validation is actually in system			
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext(new String[] {"messageType.xml"});		
