@@ -81,8 +81,7 @@ public class SendMessage
 		}
 		else
 		{		
-			MultivaluedMap<String, String> map = headers.getRequestHeaders();	
-			
+			MultivaluedMap<String, String> map = headers.getRequestHeaders();				
 			PushController push=new PushController();	
 			return push.SendMessage(messageData, map.get("SchemaValidation").toString().replace("[", "").replace("]", ""));			
 		}

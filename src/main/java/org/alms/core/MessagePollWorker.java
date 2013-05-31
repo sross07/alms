@@ -51,8 +51,7 @@ public class MessagePollWorker
 			
 			for(MessageInfo info : msgList)
 			{
-				MsgIdList.add(info.getIncomingMessageId().toString());					
-				messageController.deleteMessage(info.getIncomingMessageId().toString());
+				MsgIdList.add(info.getIncomingMessageId().toString());	
 			}
 			
 			msg.setMessageIdList(MsgIdList);		

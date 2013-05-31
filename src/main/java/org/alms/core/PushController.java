@@ -26,9 +26,7 @@ public class PushController
 {	
 	
 	public String SendMessage(IMsg messageData, String schema) throws Exception
-	{
-				
-		String ResponseMessage="";	
+	{	
 		
 		IValidator msgValidator = new SimpleValidator();		
 		msgValidator = new SecurityValidator(msgValidator, messageData);	
@@ -51,21 +49,12 @@ public class PushController
 				msgController= new SendHTTPSMessage();
 			}
 			
-			ResponseMessage=msgController.DeliverMessage(messageData, schema);					
+			return msgController.DeliverMessage(messageData, schema);					
 			
 		}
-		else // Message Failed Validation
+		else 
 		{
-			AckGenerator AckMessage = new AckGenerator(false, msgValidator.errorMessage(), "CR");		
-			ResponseMessage = AckMessage.getHL7AckMessage(messageData);					
-		}	
-		
-		
-		//
-		//Messages will not be stored during "Push"		
-		//org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);
-		//
-		
-		return ResponseMessage;				
+			return new AckGenerator(false, msgValidator.errorMessage(), "CR").getHL7AckMessage(messageData);
+		}		
 	}	
 }
