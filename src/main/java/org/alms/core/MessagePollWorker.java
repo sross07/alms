@@ -34,16 +34,11 @@ public class MessagePollWorker
 	public String DoWork() throws Exception
 	{				
 		try 
-		{		
-			
-			PollManager pollMsgManager= new PollManager();
-			
-			MessageInfoManager messageController;
-			List<MessageInfo> msgList;
+		{	
+			MessageInfoManager messageController= new MessageInfoManager();		
 			UserManager userManager = new UserManager();
 			
-			messageController = new MessageInfoManager();
-			msgList=messageController.GetMessages(this.msgData.getMsgSending().getNamespaceID());
+			List<MessageInfo> msgList=messageController.GetMessages(this.msgData.getMsgSending().getNamespaceID());
 			String xmlResponse=this.CreateXML(msgList, messageId);
 			UserAccount user = userManager.GetUser(msgData.getUserName());
 			
@@ -56,19 +51,23 @@ public class MessagePollWorker
 			
 			for(MessageInfo info : msgList)
 			{
-				MsgIdList.add(info.getIncomingMessageId().toString());				
+				MsgIdList.add(info.getIncomingMessageId().toString());					
+				messageController.deleteMessage(info.getIncomingMessageId().toString());
 			}
 			
 			msg.setMessageIdList(MsgIdList);		
 			msg.setMsgDate(new Date());
-			pollMsgManager.Save(msg);	
+			
+			PollManager pollMsgManager = new PollManager();
+			pollMsgManager.Save(msg);
 						
 			return xmlResponse;
 			
 		} catch (Exception e) {
 			throw e;
 		}		
-	}
+	}	 	
+
 	
 	private String CreateXML(List<MessageInfo> msgList, UUID messageId)
 	{

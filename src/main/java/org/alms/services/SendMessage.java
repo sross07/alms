@@ -42,8 +42,6 @@ public class SendMessage
 	public String SendMessageWorker(String incomingMessage, @Context HttpHeaders headers)
 			throws Exception 
 	{	
-		// check headers		
-		// check schema		
 		
 		if (CheckHeadersError(headers))
 		{			
@@ -54,8 +52,6 @@ public class SendMessage
 		}	
 		
 		IMsg messageData = doWorkForMessageType(headers, incomingMessage);
-		
-		
 		
 		if (messageData.receiverTransmissionType().equals("POLL"))
 		{
@@ -94,8 +90,6 @@ public class SendMessage
 	
 	private IMsg doWorkForMessageType(HttpHeaders headers, String incomingMessage)
 	{
-		
-		
 		MultivaluedMap<String, String> map = headers.getRequestHeaders();		
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext(new String[] {"messageType.xml"});
@@ -133,8 +127,7 @@ public class SendMessage
 		// Make sure schema Validation is actually in system			
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext(new String[] {"messageType.xml"});		
-	
-		
+			
 		String[] beanNames= context.getBeanDefinitionNames();
 		
 		for(String item : beanNames )
@@ -147,5 +140,4 @@ public class SendMessage
 		
 		return false;
 	}
-
 }
