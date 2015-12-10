@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import org.bson.types.ObjectId;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
+import java.util.Date;
 
 @Entity
 public class PollMessage 
@@ -24,7 +25,15 @@ public class PollMessage
 	private ArrayList<String> MessageIdList;
 	
 	private UserAccount User;	
+	private Date MsgDate;	
 	
+	public Date getMsgDate() {
+		return MsgDate;
+	}
+
+	public void setMsgDate(Date msgDate) {
+		MsgDate = msgDate;
+	}
 	public ObjectId getId() {
 		return id;
 	}

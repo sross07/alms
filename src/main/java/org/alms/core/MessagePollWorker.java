@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.alms.core;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,15 +34,11 @@ public class MessagePollWorker
 	public String DoWork() throws Exception
 	{				
 		try 
-		{
-			PollManager pollMsgManager= new PollManager();
-			
-			MessageInfoManager messageController;
-			List<MessageInfo> msgList;
+		{	
+			MessageInfoManager messageController= new MessageInfoManager();		
 			UserManager userManager = new UserManager();
 			
-			messageController = new MessageInfoManager();
-			msgList=messageController.GetMessages(this.msgData.getMsgSending().getNamespaceID());
+			List<MessageInfo> msgList=messageController.GetMessages(this.msgData.getMsgSending().getNamespaceID());
 			String xmlResponse=this.CreateXML(msgList, messageId);
 			UserAccount user = userManager.GetUser(msgData.getUserName());
 			
@@ -54,18 +51,22 @@ public class MessagePollWorker
 			
 			for(MessageInfo info : msgList)
 			{
-				MsgIdList.add(info.getIncomingMessageId().toString());				
+				MsgIdList.add(info.getIncomingMessageId().toString());	
 			}
 			
 			msg.setMessageIdList(MsgIdList);		
-			pollMsgManager.Save(msg);	
+			msg.setMsgDate(new Date());
+			
+			PollManager pollMsgManager = new PollManager();
+			pollMsgManager.Save(msg);
 						
 			return xmlResponse;
 			
 		} catch (Exception e) {
 			throw e;
 		}		
-	}
+	}	 	
+
 	
 	private String CreateXML(List<MessageInfo> msgList, UUID messageId)
 	{

@@ -135,24 +135,7 @@
 		    }
 		    
 			function validateStep3(){
-		
-			    //  var isValid = true;		      
-			    //  var email = $('#email').val();		
-			    //   if(email && email.length > 0){		
-			    //    if(!isValidEmailAddress(email)){		
-			    //       isValid = false;		
-			    //       $('#msg_email').html('Email is invalid').show();       
-				//         }else{		
-			  	//        $('#msg_email').html('').hide();		
-			    //     }		
-			    // }else{		
-			    // isValid = false;		
-			    // $('#msg_email').html('Please enter email').show();		
-			    //}       
-			
-			    //return isValid;
-		      	return true;
-		
+		      	return true;		
 		    }		
 		    // Email Validation		
 		    function isValidEmailAddress(emailAddress) 
@@ -164,23 +147,21 @@
 		    //Handle the radio button 
 		    function MsgConnectionConfig()
 		    {   	
-		    	var selValue = $('input[name=ConnectionOption]:checked').val();	
+		    	var selValue = $('input[name=connectionOption]:checked').val();	
 	    	
 		    	if (typeof selValue == 'undefined')
 	    		{		    				    		
 		    		$("#PullSelected").hide();
-		    		$("#PushSelected").hide();
-		    		
-		    		alert("hi "+ selValue);
+		    		$("#PushSelected").hide();  		
 	    		}
 		    	else
 		    	{
-			    	if (selValue=="Push")
+			    	if (selValue=="PUSH")
 			    	{
 		    		   $("#PullSelected").hide(100);
 		    		   $("#PushSelected").show(100);	    		   
 			    	}	    		
-			    	else if (selValue=="Pull")
+			    	else if (selValue=="POLL")
 		    		{
 		    		   $("#PushSelected").hide(100);
 		    		   $("#PullSelected").show(100);			    		
@@ -193,60 +174,59 @@
 
 	<stripes:layout-component name="contents">
 		<stripes:form action="/CompletedRegistration.action"  >			
-		  <input type='hidden' name="issubmit" value="1">	
-		<!-- Tabs -->	
-		  		<div id="wizard" class="swMain">	
-		  			<ul>	
-		  				<li><a href="#step-1">	
-		                <label class="stepNumber">1</label>	
-		                <span class="stepDesc">	
-		                   Account Details<br />	
-		                   <small>Fill your account details.</small>	
-		                </span>	
-		            </a></li>	
-		  				<li><a href="#step-2">	
-		                <label class="stepNumber">2</label>	
-		                <span class="stepDesc">	
-		                   Institution<br />	
-		                   <small>Fill your institution details.</small>	
-		                </span>	
-		            </a></li>	
-		  				<li><a href="#step-3">	
-		                <label class="stepNumber">3</label>	
-		                <span class="stepDesc">	
-		                   Configuration<br />	
-		                   <small>Messaging configuration.</small>	
-		                </span>	
-		             </a></li>	
-		  			</ul>	
-		  			<div id="step-1">		
-		            <h2 class="StepTitle">Step 1: Account Details</h2>	
-		            <table cellspacing="3" cellpadding="3" align="center">	
-		          			<tr>	
-		                    	<td align="center" colspan="3">&nbsp;</td>	
-		          			</tr>        	
-		          			<tr>	
-		                    	<td align="right">Username :</td>	
-		                    	<td align="left">	
-		                    		<stripes:text id="username" name="username" value="" class="txtBox" />
-		                      	</td>	
-		                    	<td align="left"><span id="msg_username"></span>&nbsp;</td>	
-		          			</tr>	
-		          			<tr>	
-		                    	<td align="right">Password :</td>	
-		                    	<td align="left">	
-		                    		<stripes:password id="password" name="password" value="" class="txtBox"/>		                    	  
-		                      	</td>	
-		                    	<td align="left"><span id="msg_password"></span>&nbsp;</td>	
-		          			</tr> 	
-		                	<tr>	
-		                    	<td align="right">Confirm Password :</td>	
-		                    	<td align="left">	
-		                    		<stripes:password id="cpassword" name="cpassword" value="" class="txtBox"/>		                    	  
-		                      	</td>	
-		                    	<td align="left"><span id="msg_cpassword"></span>&nbsp;</td>	
-		          			</tr>  
-		  			   </table>  
+		  <input type='hidden' name="issubmit" value="1">		
+	  		<div id="wizard" class="swMain">	
+	  			<ul>	
+	  				<li><a href="#step-1">	
+	                <label class="stepNumber">1</label>	
+	                <span class="stepDesc">	
+	                   Account Details<br />	
+	                   <small>Fill your account details.</small>	
+	                </span>	
+	            </a></li>	
+	  				<li><a href="#step-2">	
+	                <label class="stepNumber">2</label>	
+	                <span class="stepDesc">	
+	                   Institution<br />	
+	                   <small>Fill your institution details.</small>	
+	                </span>	
+	            </a></li>	
+	  				<li><a href="#step-3">	
+	                <label class="stepNumber">3</label>	
+	                <span class="stepDesc">	
+	                   Configuration<br />	
+	                   <small>Messaging configuration.</small>	
+	                </span>	
+	             </a></li>	
+	  			</ul>	
+	  			<div id="step-1">		
+	            <h2 class="StepTitle">Step 1: Account Details</h2>	
+	            <table cellspacing="3" cellpadding="3" align="center">	
+	          			<tr>	
+	                    	<td align="center" colspan="3">&nbsp;</td>	
+	          			</tr>        	
+	          			<tr>	
+	                    	<td align="right">Username :</td>	
+	                    	<td align="left">	
+	                    		<stripes:text id="username" name="username" value="" class="txtBox" />
+	                      	</td>	
+	                    	<td align="left"><span id="msg_username"></span>&nbsp;</td>	
+	          			</tr>	
+	          			<tr>	
+	                    	<td align="right">Password :</td>	
+	                    	<td align="left">	
+	                    		<stripes:password id="password" name="password" value="" class="txtBox"/>		                    	  
+	                      	</td>	
+	                    	<td align="left"><span id="msg_password"></span>&nbsp;</td>	
+	          			</tr> 	
+	                	<tr>	
+	                    	<td align="right">Confirm Password :</td>	
+	                    	<td align="left">	
+	                    		<stripes:password id="cpassword" name="cpassword" value="" class="txtBox"/>		                    	  
+	                      	</td>	
+	                    	<td align="left"><span id="msg_cpassword"></span>&nbsp;</td>	
+	          			</tr>  
+	  			   </table>  
 		        </div>
 		  			<div id="step-2">	
 			            <h2 class="StepTitle">Step 2: Institution Details</h2>		
@@ -257,7 +237,7 @@
 			          			<tr>	
 			                    	<td align="right">Institution Name :</td>	
 			                    	<td align="left">				                    	  
-			                    	  <stripes:text id="InstitutionName" name="InstitutionName" value="" class="txtBox"/>
+			                    	  <stripes:text id="institutionName" name="institutionName" value="" class="txtBox"/>
 			                      	</td>	
 			                    	<td align="left"><span id="msg_InstitutionName"></span>&nbsp;</td>	
 			          			</tr>	
@@ -286,22 +266,30 @@
      						<tr>	
 		                    	<td align="right">Messaging Connection:</td>	
 		                    	<td align="left">				                    	  
-		                    	  	<stripes:radio name="ConnectionOption" value="Push" onchange="MsgConnectionConfig();" />Push
-									<stripes:radio name="ConnectionOption" value="Pull" onchange="MsgConnectionConfig();" />Pull
+		                    	  	<stripes:radio id="connectionOption" name="connectionOption" value="PUSH" onchange="MsgConnectionConfig();" />PUSH
+									<stripes:radio id="connectionOption" name="connectionOption" value="POLL" onchange="MsgConnectionConfig();" />POLL
 		                      	</td>		                    		
 		          			</tr>	
 		          			 <tr>
 				                <td> <div id="lblHeader">More Options: </div> </td>
 				                <td> 
-				                	<div id="PushSelected">Push Is Selected</div> 
-				                	<div id="PullSelected">Pull Is Selected</div>				                	
+				                	<div id="PushSelected">
+				                		URL to Push To: <stripes:text id="pushUrl" name="pushUrl" value="" class="txtBox"/> <br />
+										Header Variables: <stripes:text id="pushHeaderVarible" name="pushHeaderVarible" value="" class="txtBox"/> <br />
+	                					HTTP Verb:  
+	                					<stripes:radio id="pushHttpVerb" name="pushHttpVerb" value="POST"/>Post
+										<stripes:radio id="pushHttpVerb" name="pushHttpVerb" value="PUT"/>Put 
+										<br />			                		
+				                	</div> 
+				                	
+				                	<div id="PullSelected">
+				                		Set to Pull.  No other options.
+				                	</div>				                	
 			                	</td>
 				            </tr> 
 		            	</table>      	            	
 		        	</div>		  			
-	  			</div> 			
-	  			
-		<!-- End SmartWizard Content -->  
+	  			</div> 	
 		</stripes:form>		
 	</stripes:layout-component>
 </stripes:layout-render>

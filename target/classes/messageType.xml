@@ -3,35 +3,27 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="NAHLNResultBaseMessage" class="org.alms.messages.hl7.ResultBaseMessage">
-		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultBase.xsd"/>
+	<bean id="ResultBaseMessage" class="org.alms.messages.hl7.ResultBaseMessage">
+		<property name="XSDLocation"  value="d:\\aln\\ResultBase.xsd"/>
 	</bean> 
 	
 	<bean id="ALMSResultMessage" class="org.alms.messages.hl7.ALMS">
-		<property name="XSDLocation"  value="D:\\aln\\ALNResult.xsd"/>
+		<property name="XSDLocation"  value="d:\\aln\\ALMSResult.xsd"/>
 	</bean> 
 	
 	<bean id="CsfResultMessage" class="org.alms.messages.hl7.CsfBaseResult">
-		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultCSF.xsd"/>
+		<property name="XSDLocation"  value="d:\\aln\\NAHLNResultCSF.xsd"/>
 	</bean> 
 	
 	<bean id="AIResultMessage" class="org.alms.messages.hl7.AvainInfluBase">
-		<property name="XSDLocation"  value="D:\\aln\\NAHLNResultWSAI.xsd"/>
+		<property name="XSDLocation"  value="d:\\aln\\ResultWSAI.xsd"/>
 	</bean> 
-	
-	<bean id="OrderBase" class="org.alms.messages.hl7.OrderMessage">
-		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderBase.xsd"/>
-	</bean> 
-	
-	<bean id="OrderExternalBase" class="org.alms.messages.hl7.ExternalOrderMsg">
-		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderExternalBase.xsd"/>
-	</bean> 
-	
-	<bean id="OrderExternalBase" class="org.alms.messages.hl7.ExternalOrderMsg">
-		<property name="XSDLocation"  value="D:\\aln\\NAHLNOrderExternalBase.xsd"/>
-	</bean> 
-	
+
+	<bean id="SIResultMessage" class="org.alms.messages.hl7.OrderMessage">
+		<property name="XSDLocation"  value="d:\\aln\\OrderBase.xsd"/>
+	</bean> 	
+
 	<bean id="OrderResponse" class="org.alms.messages.hl7.OrderResponse">
-		<property name="XSDLocation"  value="D:\\aln\\OrderResponse.xsd"/>
+		<property name="XSDLocation"  value="d:\\aln\\OrderResponse.xsd"/>
 	</bean> 
 </beans>

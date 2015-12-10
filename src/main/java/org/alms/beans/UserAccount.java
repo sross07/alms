@@ -28,8 +28,25 @@ public class UserAccount
 	private String protocol;
 	private String fileStore;
 	private String fileStorePW;
-	private ArrayList<Header> HeaderVariables;
+	private ArrayList<Header> HeaderVariables;	
+	private String institutionName;
+	private String contactName;
 	
+	public String getInstitutionName() {
+		return institutionName;
+	}
+
+	public void setInstitutionName(String institutionName) {
+		this.institutionName = institutionName;
+	}
+
+	public String getContactName() {
+		return contactName;
+	}
+
+	public void setContactName(String contactName) {
+		this.contactName = contactName;
+	}	
 	
 	public String getFileStore() {
 		return fileStore;

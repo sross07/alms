@@ -26,9 +26,7 @@ public class PushController
 {	
 	
 	public String SendMessage(IMsg messageData, String schema) throws Exception
-	{
-				
-		String ResponseMessage="";	
+	{	
 		
 		IValidator msgValidator = new SimpleValidator();		
 		msgValidator = new SecurityValidator(msgValidator, messageData);	
@@ -42,30 +40,29 @@ public class PushController
 			UserManager manager = new UserManager();			
 			UserAccount destinationAccount = manager.GetUserByUniversialId(messageData.getMsgDestination().getNamespaceID());	 
 			
-			if (destinationAccount.getProtocol().equals("HTTP"))
-			{
-				msgController= new SendHTTPMessage();				
-			}
-			else
-			{
-				msgController= new SendHTTPSMessage();
-			}
+			try{				
 			
-			ResponseMessage=msgController.DeliverMessage(messageData, schema);					
+				if (destinationAccount.getProtocol().equals("HTTP"))
+				{
+					msgController= new SendHTTPMessage();				
+				}
+				else
+				{
+					msgController= new SendHTTPSMessage();
+				}
+				
+				return msgController.DeliverMessage(messageData, schema);				
+			}
+			catch(Exception ex)
+			{
+				return new AckGenerator(false, ex.toString(), "CR").getHL7AckMessage(messageData);
+				
+			}
 			
 		}
-		else // Message Failed Validation
+		else 
 		{
-			AckGenerator AckMessage = new AckGenerator(false, msgValidator.errorMessage(), "CR");		
-			ResponseMessage = AckMessage.getHL7AckMessage(messageData);					
-		}	
-		
-		
-		//
-		//Messages will not be stored during "Push"		
-		//org.alms.core.OutgoingMessageController.SaveSentMessage(messageData, ResponseMessage);
-		//
-		
-		return ResponseMessage;				
+			return new AckGenerator(false, msgValidator.errorMessage(), "CR").getHL7AckMessage(messageData);
+		}		
 	}	
 }
