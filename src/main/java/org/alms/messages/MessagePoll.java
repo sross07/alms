@@ -33,8 +33,7 @@ public class MessagePoll implements IMsg {
 	public void setHeader(HttpHeaders msgHeaders) {
 		MultivaluedMap<String, String> map = msgHeaders.getRequestHeaders();		
 		this.userName=map.get("username").toString().replace("[", "").replace("]", "");
-		this.password=map.get("password").toString().replace("[", "").replace("]", "");		
-
+		this.password=map.get("password").toString().replace("[", "").replace("]", "");	
 	}
 
 	@Override

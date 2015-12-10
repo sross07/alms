@@ -26,5 +26,4 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<bean id="OrderResponse" class="org.alms.messages.hl7.OrderResponse">
 		<property name="XSDLocation"  value="d:\\aln\\OrderResponse.xsd"/>
 	</bean> 
-
 </beans>

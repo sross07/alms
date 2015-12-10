@@ -12,7 +12,6 @@ package org.alms.messages;
 import org.alms.beans.*;
 import javax.ws.rs.core.HttpHeaders;
 
-
 public interface IMsg 
 {
 	public void setHeader(HttpHeaders msgHeaders);	

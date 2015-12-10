@@ -40,16 +40,24 @@ public class PushController
 			UserManager manager = new UserManager();			
 			UserAccount destinationAccount = manager.GetUserByUniversialId(messageData.getMsgDestination().getNamespaceID());	 
 			
-			if (destinationAccount.getProtocol().equals("HTTP"))
-			{
-				msgController= new SendHTTPMessage();				
-			}
-			else
-			{
-				msgController= new SendHTTPSMessage();
-			}
+			try{				
 			
-			return msgController.DeliverMessage(messageData, schema);					
+				if (destinationAccount.getProtocol().equals("HTTP"))
+				{
+					msgController= new SendHTTPMessage();				
+				}
+				else
+				{
+					msgController= new SendHTTPSMessage();
+				}
+				
+				return msgController.DeliverMessage(messageData, schema);				
+			}
+			catch(Exception ex)
+			{
+				return new AckGenerator(false, ex.toString(), "CR").getHL7AckMessage(messageData);
+				
+			}
 			
 		}
 		else 
